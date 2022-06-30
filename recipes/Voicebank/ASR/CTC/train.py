@@ -14,7 +14,6 @@ Authors
 """
 import os
 import sys
-from tabnanny import verbose
 import torch
 import speechbrain as sb
 from speechbrain.utils.distributed import run_on_main
