@@ -635,7 +635,7 @@ class Brain:
         """
         pass
 
-    def on_stage_end(self, stage, stage_loss, epoch=None):
+    def on_stage_end(self, stage, stage_loss, epoch=None, tr_time=None):
         """Gets called at the end of a stage.
 
         Useful for computing stage statistics, saving checkpoints, etc.
@@ -1013,9 +1013,12 @@ class Brain:
                     if sb.utils.distributed.if_main_process():
                         self._save_intra_epoch_ckpt()
                     last_ckpt_time = time.time()
+        
+        # Added by Sangeet: 3rd July. Keep track of training time of an epcoch
+        self.tr_time = time.strftime('%M:%S', time.gmtime(t.format_dict["elapsed"]))
 
         # Run train "on_stage_end" on all processes
-        self.on_stage_end(Stage.TRAIN, self.avg_train_loss, epoch)
+        self.on_stage_end(Stage.TRAIN, self.avg_train_loss, epoch, self.tr_time)
         self.avg_train_loss = 0.0
         self.step = 0
 
@@ -1046,7 +1049,7 @@ class Brain:
                 self.step = 0
                 run_on_main(
                     self.on_stage_end,
-                    args=[Stage.VALID, avg_valid_loss, epoch],
+                    args=[Stage.VALID, avg_valid_loss, epoch, self.tr_time],
                 )
 
     def fit(
@@ -1257,7 +1260,7 @@ class Brain:
 
             # Only run evaluation "on_stage_end" on main process
             run_on_main(
-                self.on_stage_end, args=[Stage.TEST, avg_test_loss, None]
+                self.on_stage_end, args=[Stage.TEST, avg_test_loss, None, None]
             )
         self.step = 0
         return avg_test_loss
