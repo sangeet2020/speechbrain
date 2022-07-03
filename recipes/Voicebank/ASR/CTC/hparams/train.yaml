@@ -14,6 +14,7 @@ per_file: !ref <output_folder>/per.txt
 save_folder: !ref <output_folder>/save
 train_log: !ref <output_folder>/train_log.txt
 
+
 # Data files
 data_folder: ../../vctk-16k  # e.g. /path/to/Voicebank
 json_dir: !ref vctk_json
@@ -31,7 +32,11 @@ dataloader_options:
 lr: 1.0
 
 # Set this to the path of a pretrained model to load before training
-# pretrained: model_clean_ep3.ckpt
+# pretrained: results/clean_wav/phn/123/save/CKPT+2022-06-28+02-40-51+00/model.ckpt   # clean trained
+pretrained: results/clean_noisy_mix/phn/1200/save/CKPT+2022-06-28+18-25-17+00/model.ckpt # clean noisy mix trained
+inference_type: !ref noisy_wav
+inference_log: !ref <output_folder>/inf_log.txt
+inference_per_file: !ref <output_folder>/<inference_type>_inf_per.txt
 
 # Feature parameters
 sample_rate: 16000
@@ -131,3 +136,6 @@ per_stats: !name:speechbrain.utils.metric_stats.ErrorRateStats
 
 train_logger: !new:speechbrain.utils.train_logger.FileTrainLogger
     save_file: !ref <train_log>
+
+inference_logger: !new:speechbrain.utils.train_logger.FileTrainLogger
+    save_file: !ref <inference_log>

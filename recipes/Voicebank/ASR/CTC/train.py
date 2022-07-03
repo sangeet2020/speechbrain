@@ -18,12 +18,18 @@ import torch
 import speechbrain as sb
 from speechbrain.utils.distributed import run_on_main
 from hyperpyyaml import load_hyperpyyaml
-
+from pprint import pprint
+import pdb
 
 # Define training procedure
 class ASR_Brain(sb.Brain):
     def compute_forward(self, batch, stage):
         "Given an input batch it computes the phoneme probabilities."
+        
+        # asd=vars(batch)
+        # print("Encoder lenght tensor: ", asd['phn_encoded'][1])
+        # print("Sig length tensor: ", asd['sig'][1])
+        
         batch = batch.to(self.device)
         wavs, wav_lens = batch.sig
         wavs = self.modules.augmentation(wavs, wav_lens)
@@ -32,11 +38,12 @@ class ASR_Brain(sb.Brain):
         out = self.modules.model(feats)
         out = self.modules.output(out)
         pout = self.hparams.log_softmax(out)
-
+        # pdb.set_trace()
         return pout, wav_lens
 
     def compute_objectives(self, predictions, batch, stage):
         "Given the network predictions and targets computed the CTC loss."
+        # pdb.set_trace()
         pout, pout_lens = predictions
         phns, phn_lens = batch.phn_encoded
         loss = self.hparams.compute_cost(pout, phns, pout_lens, phn_lens)
@@ -63,7 +70,7 @@ class ASR_Brain(sb.Brain):
         if stage != sb.Stage.TRAIN:
             self.per_metrics = self.hparams.per_stats()
 
-    def on_stage_end(self, stage, stage_loss, epoch):
+    def on_stage_end(self, stage, stage_loss, epoch, tr_time):
         """Gets called at the end of a stage."""
         if stage == sb.Stage.TRAIN:
             self.train_loss = stage_loss
@@ -72,11 +79,12 @@ class ASR_Brain(sb.Brain):
 
         if stage == sb.Stage.VALID:
             old_lr, new_lr = self.hparams.lr_annealing(per)
+            # pdb.set_trace()
             sb.nnet.schedulers.update_learning_rate(self.optimizer, new_lr)
             self.hparams.train_logger.log_stats(
                 stats_meta={"epoch": epoch, "lr": old_lr},
-                train_stats={"loss": self.train_loss},
-                valid_stats={"loss": stage_loss, "PER": per},
+                train_stats={"tr_time": tr_time, "loss": self.train_loss},
+                valid_stats={"loss": stage_loss, "PER": per}
             )
             self.checkpointer.save_and_keep_only(
                 meta={"PER": per}, min_keys=["PER"],
