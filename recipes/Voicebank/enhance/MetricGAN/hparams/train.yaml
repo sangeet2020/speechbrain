@@ -10,8 +10,8 @@
 # Seed needs to be set at top of yaml, before objects with parameters are made
 seed: 4234
 __set_seed: !!python/object/apply:torch.manual_seed [!ref <seed>]
-
-data_folder: !PLACEHOLDER # e.g, /data/member1/user_jasonfu/noisy-vctk-16k
+input_type: noisy_wav
+data_folder: ../../vctk-16k  # e.g. /path/to/Voicebank
 train_clean_folder: !ref <data_folder>/clean_trainset_28spk_wav_16k/
 
 MetricGAN_folder: !ref <output_folder>/enhanced_wavs
@@ -33,9 +33,10 @@ N_fft: 512
 window_fn: !name:torch.hamming_window
 
 # Data files
-train_annotation: !ref <data_folder>/train.json
-valid_annotation: !ref <data_folder>/valid.json
-test_annotation: !ref <data_folder>/test.json
+json_dir: !ref vctk_json
+train_annotation: !ref <json_dir>/train.json
+valid_annotation: !ref <json_dir>/valid.json
+test_annotation: !ref <json_dir>/test.json
 skip_prep: False
 
 # The target metrics that you want to optimize.

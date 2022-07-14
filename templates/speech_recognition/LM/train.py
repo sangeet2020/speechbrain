@@ -112,7 +112,7 @@ class LM(sb.core.Brain):
 
         return loss
 
-    def on_stage_end(self, stage, stage_loss, epoch):
+    def on_stage_end(self, stage, stage_loss, epoch, tr_time):
         """Gets called at the end of an epoch.
 
         Arguments
@@ -146,7 +146,7 @@ class LM(sb.core.Brain):
             # The train_logger writes a summary to stdout and to the logfile.
             self.hparams.train_logger.log_stats(
                 {"Epoch": epoch},
-                train_stats={"loss": self.train_loss},
+                train_stats={"tr_time": tr_time, "loss": self.train_loss},
                 valid_stats=stats,
             )
 

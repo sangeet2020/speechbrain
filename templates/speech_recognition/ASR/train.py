@@ -243,7 +243,7 @@ class ASR(sb.Brain):
             self.cer_metric = self.hparams.cer_computer()
             self.wer_metric = self.hparams.error_rate_computer()
 
-    def on_stage_end(self, stage, stage_loss, epoch):
+    def on_stage_end(self, stage, stage_loss, epoch, tr_time):
         """Gets called at the end of an epoch.
 
         Arguments
@@ -258,7 +258,7 @@ class ASR(sb.Brain):
         """
 
         # Store the train loss until the validation stage.
-        stage_stats = {"loss": stage_loss}
+        stage_stats = {"tr_time": tr_time, "loss": stage_loss}
         if stage == sb.Stage.TRAIN:
             self.train_stats = stage_stats
 

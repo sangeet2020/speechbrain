@@ -394,7 +394,7 @@ class MetricGanBrain(sb.Brain):
             train_loader_kwargs=self.hparams.dataloader_options,
         )
 
-    def on_stage_end(self, stage, stage_loss, epoch=None):
+    def on_stage_end(self, stage, stage_loss, epoch=None, tr_time=None):
         "Called at the end of each stage to summarize progress"
         if self.sub_stage != SubStage.GENERATOR:
             return
@@ -422,7 +422,7 @@ class MetricGanBrain(sb.Brain):
                 self.hparams.tensorboard_train_logger.log_stats(valid_stats)
             self.hparams.train_logger.log_stats(
                 {"Epoch": epoch},
-                train_stats={"loss": self.train_loss},
+                train_stats={"time": tr_time, "loss": self.train_loss},
                 valid_stats=stats,
             )
             self.checkpointer.save_and_keep_only(
@@ -550,7 +550,7 @@ if __name__ == "__main__":
         prepare_voicebank,
         kwargs={
             "data_folder": hparams["data_folder"],
-            "save_folder": hparams["data_folder"],
+            "save_folder": hparams["json_dir"],
             "skip_prep": hparams["skip_prep"],
         },
     )

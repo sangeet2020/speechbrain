@@ -27,6 +27,8 @@ from composite_eval import eval_composite
 from hyperpyyaml import load_hyperpyyaml
 from speechbrain.utils.data_utils import undo_padding
 from speechbrain.utils.distributed import run_on_main
+from pprint import pprint
+import pdb
 
 
 def pesq_eval(pred_wav, target_wav):
@@ -72,12 +74,13 @@ class MTLbrain(sb.Brain):
         batch = batch.to(self.device)
         self.stage = stage
 
+        # pdb.set_trace()
         predictions = {}
-        if self.hparams.enhance_type is not None:
+        if self.hparams.enhance_type is not None: # False for perceptual mdoel | # True for enhance model, asr model
             noisy_wavs, lens = self.prepare_wavs(batch.noisy_sig)
 
             # Mask with "signal approximation (SA)"
-            if self.hparams.enhance_type == "masking":
+            if self.hparams.enhance_type == "masking":  # True for enhance model, asr model
                 (
                     predictions["wavs"],
                     predictions["feats"],
@@ -87,23 +90,24 @@ class MTLbrain(sb.Brain):
             elif self.hparams.enhance_type == "clean":
                 predictions["wavs"], _ = self.prepare_wavs(batch.clean_sig)
 
-        # Generate clean features for ASR pre-training
+        # Generate clean features for ASR pre-training. True for perceptual model
         if self.hparams.ctc_type == "clean" or self.hparams.seq_type == "clean":
             clean_wavs, lens = self.prepare_wavs(batch.clean_sig)
             clean_feats = self.prepare_feats(clean_wavs)
-
+        
+        # pdb.set_trace()
         # Compute seq outputs
-        if self.hparams.seq_type is not None:
+        if self.hparams.seq_type is not None:   # True for perceptual model, asr model
 
             # Prepare target inputs
             tokens, token_lens = self.prepare_targets(batch.tokens_bos)
             tokens = self.modules.tgt_embedding(tokens)
 
-            if self.hparams.seq_type == "clean":
+            if self.hparams.seq_type == "clean":    # True for perceptual model
                 if hasattr(self.hparams, "perceptual_fbank"):
                     clean_feats = self.hparams.fbank(clean_feats)
                 embed = self.modules.src_embedding(clean_feats)
-            if self.hparams.seq_type == "joint":
+            if self.hparams.seq_type == "joint":    # True for asr
                 asr_feats = predictions["wavs"]
                 if stage == sb.Stage.TRAIN:
                     asr_feats = self.hparams.augment(asr_feats, lens)
@@ -114,7 +118,7 @@ class MTLbrain(sb.Brain):
             out = self.modules.seq_output(dec_out[0])
             predictions["seq_pout"] = torch.log_softmax(out, dim=-1)
 
-            if self.hparams.ctc_type is not None:
+            if self.hparams.ctc_type is not None:   # True for perceptual model,asr
                 out = self.modules.ctc_output(embed)
                 predictions["ctc_pout"] = torch.log_softmax(out, dim=-1)
 
@@ -122,7 +126,7 @@ class MTLbrain(sb.Brain):
                 predictions["hyps"], _ = self.hparams.beam_searcher(
                     embed.detach(), lens
                 )
-
+                
         elif self.hparams.ctc_type is not None:
             if self.hparams.ctc_type == "clean":
                 embed = self.modules.src_embedding(clean_feats)
@@ -141,7 +145,7 @@ class MTLbrain(sb.Brain):
         """Prepare possibly enhanced waveforms"""
         wavs, wav_lens = signal
 
-        if self.stage == sb.Stage.TRAIN and hasattr(self.hparams, "env_corr"):
+        if self.stage == sb.Stage.TRAIN and hasattr(self.hparams, "env_corr"):  # True for asr
             if augment:
                 wavs_noise = self.hparams.env_corr(wavs, wav_lens)
                 wavs = torch.cat([wavs, wavs_noise], dim=0)
@@ -170,13 +174,13 @@ class MTLbrain(sb.Brain):
 
     def compute_objectives(self, predictions, batch, stage):
         """Compute possibly several loss terms: enhance, mimic, ctc, seq"""
-
+        
         # Do not augment targets
         clean_wavs, lens = self.prepare_wavs(batch.clean_sig, augment=False)
         loss = 0
-
+        # pdb.set_trace()
         # Compute enhancement loss
-        if self.hparams.enhance_weight > 0:
+        if self.hparams.enhance_weight > 0: # False for perceptual model, asr | # True for enhance model
             clean_stft = self.modules.enhance_model.stft(clean_wavs)
             clean_feats = self.modules.enhance_model.extract_feats(clean_stft)
             enhance_loss = self.hparams.enhance_loss(
@@ -185,7 +189,8 @@ class MTLbrain(sb.Brain):
             loss += self.hparams.enhance_weight * enhance_loss
 
             if stage != sb.Stage.TRAIN:
-                self.enh_metrics.append(
+                # pdb.set_trace()
+                self.enh_metrics.append(    # computes L1 loss batchwise
                     batch.id, predictions["feats"], clean_feats, lens
                 )
                 self.stoi_metrics.append(
@@ -216,8 +221,8 @@ class MTLbrain(sb.Brain):
                         path = os.path.join(self.hparams.enh_dir, uid + ".wav")
                         torchaudio.save(path, wav.cpu(), sample_rate=16000)
 
-        # Compute mimic loss
-        if self.hparams.mimic_weight > 0:
+        # Compute mimic loss 
+        if self.hparams.mimic_weight > 0:   # False for perceptual model, asr | # True for enhance model
             enhance_mag = predictions["feats"]
             if hasattr(self.hparams, "perceptual_fbank"):
                 enhance_mag = self.hparams.perceptual_fbank(enhance_mag)
@@ -232,11 +237,11 @@ class MTLbrain(sb.Brain):
                     batch.id, enh_embed, clean_embed, lens
                 )
 
-        # Compute hard ASR loss
+        # Compute hard ASR loss  
         if self.hparams.ctc_weight > 0 and (
             not hasattr(self.hparams, "ctc_epochs")
             or self.hparams.epoch_counter.current < self.hparams.ctc_epochs
-        ):
+        ):  # True for only perceptual model
             tokens, token_lens = self.prepare_targets(batch.tokens)
             ctc_loss = sb.nnet.losses.ctc_loss(
                 predictions["ctc_pout"],
@@ -262,7 +267,7 @@ class MTLbrain(sb.Brain):
                 )
 
         # Compute nll loss for seq2seq model
-        if self.hparams.seq_weight > 0:
+        if self.hparams.seq_weight > 0:     # True for perceptual model, asr
 
             tokens, token_lens = self.prepare_targets(batch.tokens_eos)
             seq_loss = self.hparams.seq_loss(
@@ -329,7 +334,7 @@ class MTLbrain(sb.Brain):
                     for p in self.modules[model].parameters():
                         p.requires_grad = False
 
-    def on_stage_end(self, stage, stage_loss, epoch):
+    def on_stage_end(self, stage, stage_loss, epoch, tr_time):
         if stage == sb.Stage.TRAIN:
             self.train_loss = stage_loss
         else:
@@ -373,7 +378,7 @@ class MTLbrain(sb.Brain):
 
             self.hparams.train_logger.log_stats(
                 stats_meta=stats_meta,
-                train_stats={"loss": self.train_loss},
+                train_stats={"tr_time": tr_time, "loss": self.train_loss},
                 valid_stats=stage_stats,
             )
             self.checkpointer.save_and_keep_only(
@@ -426,7 +431,7 @@ def dataio_prep(hparams, token_encoder):
     """Creates the datasets and their data processing pipelines"""
 
     # Define pipelines
-    @sb.utils.data_pipeline.takes("noisy_wav", "clean_wav")
+    @sb.utils.data_pipeline.takes(hparams["input_type"], "clean_wav")
     @sb.utils.data_pipeline.provides("noisy_sig", "clean_sig")
     def audio_pipeline(noisy_wav, clean_wav):
         yield sb.dataio.dataio.read_audio(noisy_wav)
@@ -450,8 +455,14 @@ def dataio_prep(hparams, token_encoder):
         yield tokens_eos
         tokens = torch.LongTensor(tokens_list)
         yield tokens
+        
 
     # Create datasets
+    hparams["train_logger"].log_stats(
+        stats_meta={
+            "Training on input type: ": hparams["input_type"]
+        }
+    )
     data = {}
     data_info = {
         "train": hparams["train_annotation"],
@@ -485,7 +496,6 @@ def dataio_prep(hparams, token_encoder):
         token_encoder.update_from_didataset(
             data["train"], output_key="tokens_list"
         )
-
     return data
 
 
@@ -496,6 +506,9 @@ if __name__ == "__main__":
     hparams_file, run_opts, overrides = sb.parse_arguments(sys.argv[1:])
     with open(hparams_file) as fin:
         hparams = load_hyperpyyaml(fin, overrides)
+
+    # Initialize ddp (useful only for multi-GPU DDP training)
+    sb.utils.distributed.ddp_init_group(run_opts)
 
     # Create experiment directory
     sb.create_experiment_directory(
@@ -511,7 +524,7 @@ if __name__ == "__main__":
         prepare_voicebank,
         kwargs={
             "data_folder": hparams["data_folder"],
-            "save_folder": hparams["data_folder"],
+            "save_folder": hparams["json_dir"],
             "skip_prep": hparams["skip_prep"],
         },
     )
@@ -553,7 +566,7 @@ if __name__ == "__main__":
 
     # Evaluate best checkpoint, using lowest or highest value on validation
     outdir = mtl_brain.hparams.output_folder
-    for dset in ["valid", "test"]:
+    for dset in ["test"]:
         mtl_brain.hparams.stats_file = os.path.join(outdir, f"{dset}_stats")
         mtl_brain.evaluate(
             datasets[dset],
