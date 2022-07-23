@@ -25,7 +25,8 @@ from speechbrain.processing.features import spectral_magnitude
 from speechbrain.nnet.loss.stoi_loss import stoi_loss
 from speechbrain.utils.distributed import run_on_main
 from speechbrain.dataio.sampler import ReproducibleWeightedRandomSampler
-
+import pdb
+from pprint import pprint
 
 def pesq_eval(pred_wav, target_wav):
     """Normalized PESQ (to 0-1)"""
@@ -59,7 +60,7 @@ class MetricGanBrain(sb.Brain):
     def compute_forward(self, batch, stage):
         "Given an input batch computes the enhanced signal"
         batch = batch.to(self.device)
-
+        
         if self.sub_stage == SubStage.HISTORICAL:
             predict_wav, lens = batch.enh_sig
         else:
@@ -75,11 +76,11 @@ class MetricGanBrain(sb.Brain):
             predict_wav = self.hparams.resynth(
                 torch.expm1(predict_spec), noisy_wav
             )
-
         return predict_wav
 
     def compute_objectives(self, predictions, batch, stage, optim_name=""):
         "Given the network predictions and targets compute the total loss"
+        
         predict_wav = predictions
         predict_spec = self.compute_feats(predict_wav)
 
@@ -128,7 +129,7 @@ class MetricGanBrain(sb.Brain):
 
         if stage == sb.Stage.TRAIN:
             # Compute the cost
-            cost = self.hparams.compute_cost(est_score, target_score)
+            cost = self.hparams.compute_cost(est_score, target_score) 
             if optim_name == "generator":
                 cost += self.hparams.mse_weight * mse_cost
                 self.metrics["G"].append(cost.detach())
@@ -156,6 +157,7 @@ class MetricGanBrain(sb.Brain):
                     torch.unsqueeze(pred_wav[: int(length)].cpu(), 0),
                     16000,
                 )
+            # pdb.set_trace()
 
         return cost
 
@@ -334,7 +336,6 @@ class MetricGanBrain(sb.Brain):
         This method calls ``fit()`` again to train the discriminator
         before proceeding with generator training.
         """
-
         self.mse_metric = MetricStats(metric=self.hparams.compute_cost)
         self.metrics = {"G": [], "D": []}
 
@@ -406,6 +407,7 @@ class MetricGanBrain(sb.Brain):
             print("Avg G loss: %.3f" % torch.mean(g_loss))
             print("Avg D loss: %.3f" % torch.mean(d_loss))
         else:
+            # pdb.set_trace()
             stats = {
                 "SI-SNR": -stage_loss,
                 "pesq": 5 * self.pesq_metric.summarize("average") - 0.5,
@@ -413,6 +415,7 @@ class MetricGanBrain(sb.Brain):
             }
 
         if stage == sb.Stage.VALID:
+            # pdb.set_trace()
             if self.hparams.use_tensorboard:
                 valid_stats = {
                     "SI-SNR": -stage_loss,
@@ -440,9 +443,10 @@ class MetricGanBrain(sb.Brain):
     ):
         "Override dataloader to insert custom sampler/dataset"
         if stage == sb.Stage.TRAIN:
-
+            
             # Create a new dataset each time, this set grows
             if self.sub_stage == SubStage.HISTORICAL:
+                
                 dataset = sb.dataio.dataset.DynamicItemDataset(
                     data=dataset,
                     dynamic_items=[enh_pipeline],
@@ -490,14 +494,6 @@ class MetricGanBrain(sb.Brain):
             self.checkpointer.add_recoverable("d_opt", self.d_optimizer)
 
 
-# Define audio piplines
-@sb.utils.data_pipeline.takes("noisy_wav", "clean_wav")
-@sb.utils.data_pipeline.provides("noisy_sig", "clean_sig")
-def audio_pipeline(noisy_wav, clean_wav):
-    yield sb.dataio.dataio.read_audio(noisy_wav)
-    yield sb.dataio.dataio.read_audio(clean_wav)
-
-
 # For historical data
 @sb.utils.data_pipeline.takes("enh_wav", "clean_wav")
 @sb.utils.data_pipeline.provides("enh_sig", "clean_sig")
@@ -508,8 +504,20 @@ def enh_pipeline(enh_wav, clean_wav):
 
 def dataio_prep(hparams):
     """This function prepares the datasets to be used in the brain class."""
-
+    # Define audio piplines
+    
+    @sb.utils.data_pipeline.takes(hparams["input_type"], "clean_wav")
+    @sb.utils.data_pipeline.provides("noisy_sig", "clean_sig")
+    def audio_pipeline(noisy_wav, clean_wav):
+        # # pdb.set_trace()
+        yield sb.dataio.dataio.read_audio(noisy_wav)
+        yield sb.dataio.dataio.read_audio(clean_wav)
+    
     # Define datasets
+    hparams["train_logger"].log_stats(
+        stats_meta={"Training on input type": hparams["input_type"]}
+    )
+
     datasets = {}
     data_info = {
         "train": hparams["train_annotation"],
@@ -574,7 +582,7 @@ if __name__ == "__main__":
 
     # Create the folder to save enhanced files (+ support for DDP)
     run_on_main(create_folder, kwargs={"folder": hparams["enhanced_folder"]})
-
+    
     se_brain = MetricGanBrain(
         modules=hparams["modules"],
         hparams=hparams,
