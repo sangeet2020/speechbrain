@@ -70,7 +70,7 @@ class CompositeStats(sb.utils.metric_stats.MetricStats):
 class MTLbrain(sb.Brain):
     def compute_forward(self, batch, stage):
         """The forward pass computes enhanced feats and targets"""
-
+        pdb.set_trace()
         batch = batch.to(self.device)
         self.stage = stage
 
@@ -277,6 +277,7 @@ class MTLbrain(sb.Brain):
 
             if stage != sb.Stage.TRAIN:
                 if hasattr(self.hparams, "tokenizer"):
+                    pdb.set_trace()
                     pred_words = [
                         self.token_encoder.decode_ids(token_seq)
                         for token_seq in predictions["hyps"]
@@ -333,8 +334,10 @@ class MTLbrain(sb.Brain):
                     self.modules[model].eval()
                     for p in self.modules[model].parameters():
                         p.requires_grad = False
-
+        pdb.set_trace()
+        
     def on_stage_end(self, stage, stage_loss, epoch, tr_time):
+        pdb.set_trace()
         if stage == sb.Stage.TRAIN:
             self.train_loss = stage_loss
         else:
