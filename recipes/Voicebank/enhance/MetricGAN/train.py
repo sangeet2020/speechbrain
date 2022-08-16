@@ -64,16 +64,16 @@ class MetricGanBrain(sb.Brain):
         if self.sub_stage == SubStage.HISTORICAL:
             predict_wav, lens = batch.enh_sig
         else:
-            noisy_wav, lens = batch.noisy_sig
-            noisy_spec = self.compute_feats(noisy_wav)
+            noisy_wav, lens = batch.noisy_sig   # Shape: [1, 49021], [1]
+            noisy_spec = self.compute_feats(noisy_wav)  # Shape: [1, 192, 257]
 
             # mask with "signal approximation (SA)"
-            mask = self.modules.generator(noisy_spec, lengths=lens)
-            mask = mask.clamp(min=self.hparams.min_mask).squeeze(2)
-            predict_spec = torch.mul(mask, noisy_spec)
+            mask = self.modules.generator(noisy_spec, lengths=lens) # Shape: [1, 192, 257]
+            mask = mask.clamp(min=self.hparams.min_mask).squeeze(2) # Shape: [1, 192, 257]
+            predict_spec = torch.mul(mask, noisy_spec)  # Shape: [1, 192, 257]
 
             # Also return predicted wav
-            predict_wav = self.hparams.resynth(
+            predict_wav = self.hparams.resynth(     # Shape: [1, 49021]
                 torch.expm1(predict_spec), noisy_wav
             )
         return predict_wav
@@ -266,6 +266,8 @@ class MetricGanBrain(sb.Brain):
         for i, (cleanid, name, pred_wav, length) in enumerate(
             zip(clean_id, batch_id, wavs, lens)
         ):
+            pdb.set_trace()
+            print(name)
             path = os.path.join(self.hparams.MetricGAN_folder, name + ".wav")
             data = torch.unsqueeze(pred_wav[: int(length)].cpu(), 0)
             torchaudio.save(path, data, self.hparams.Sample_rate)
