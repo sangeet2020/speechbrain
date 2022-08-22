@@ -1,6 +1,6 @@
 # LibriSpeech ASR with ctc models.
-This folder contains the scripts to train a wav2vec based system using LibriSpeech.
-You can download LibriSpeech at http://www.openslr.org/12
+This folder contains the scripts to fine-tune wav2vec2 model `facebook/wav2vec2-large-xlsr-53-german` using CommonVoice dataset.
+
 
 # How to run
 python train_with_wav2vec.py hparams/file.yaml
@@ -9,12 +9,12 @@ Make sure you have "transformers" installed in your environment (see extra-requi
 
 # Results
 
-| Release | hyperparams file | Test Clean WER | HuggingFace link | Full model link | GPUs |
+| Release | hyperparams file | Test CER | Test WER | HuggingFace link | Full model link | GPUs |
 |:-------------:|:---------------------------:| :-----:| :-----:| :-----:| :--------:|
-| 09-09-21 | train_with_wav2vec.yaml | 1.90 | Not Avail. | [Link](https://drive.google.com/drive/folders/1pg0QzW-LqAISG8Viw_lUTGjXwOqh7gkl?usp=sharing) | 1xRTX8000 48GB |
+| 09-09-21 | train_with_wav2vec.yaml | 2.40 | 9.54 | Not Avail. | [Link](https://drive.google.com/drive/u/1/folders/1hag_U5gNT-GOrWEkr_yPbd2RtBP8OCcm) | 1xRTXA600 48GB |
 
 # Training Time
-It takes about 3 hours for an epoch on a rtx8000 (48 GB).
+It takes about 5.5 hours for an epoch on a 1xRTXA600 48GB.
 
 # **About SpeechBrain**
 - Website: https://speechbrain.github.io/
