@@ -1,4 +1,4 @@
-# LibriSpeech ASR with ctc models.
+# CommonVoice (DE) ASR fine-tuned on wav2vec2 model
 This folder contains the scripts to fine-tune wav2vec2 model `facebook/wav2vec2-large-xlsr-53-german` using CommonVoice dataset.
 
 
@@ -10,7 +10,7 @@ Make sure you have "transformers" installed in your environment (see extra-requi
 # Results
 
 | Release | hyperparams file | Test CER | Test WER | HuggingFace link | Full model link | GPUs |
-|:-------------:|:---------------------------:| :-----:| :-----:| :-----:| :--------:|
+|:-------------:|:---------------------------:| :-----:| :-----:| :-----:| :-----:| :--------:|
 | 09-09-21 | train_with_wav2vec.yaml | 2.40 | 9.54 | Not Avail. | [Link](https://drive.google.com/drive/u/1/folders/1hag_U5gNT-GOrWEkr_yPbd2RtBP8OCcm) | 1xRTXA600 48GB |
 
 # Training Time
