@@ -52,12 +52,12 @@ class ASR(sb.core.Brain):
         logits = self.modules.ctc_lin(x)
         p_ctc = self.hparams.log_softmax(logits)
 
-        return p_ctc, wav_lens
+        return x, p_ctc, wav_lens
 
     def compute_objectives(self, predictions, batch, stage):
         """Computes the loss (CTC) given predictions and targets."""
 
-        p_ctc, wav_lens = predictions
+        x, p_ctc, wav_lens = predictions
 
         ids = batch.id
         tokens_eos, tokens_eos_lens = batch.tokens_eos
@@ -67,11 +67,18 @@ class ASR(sb.core.Brain):
 
         if stage != sb.Stage.TRAIN:
             # Decode token terms to words
-            sequence = sb.decoders.ctc_greedy_decode(
-                p_ctc, wav_lens, blank_id=self.hparams.blank_index
-            )
-            pdb.set_trace()
-            predicted_words = self.tokenizer(sequence, task="decode_from_list")
+            if self.hparams.use_lm and  stage == sb.Stage.TEST:
+                predicted_tokens, scores = self.hparams.beam_searcher(x, wav_lens)
+                predicted_words = [
+                    self.tokenizer.sp.decode_ids(utt_seq).split(" ")
+                    for utt_seq in predicted_tokens
+                ]
+                print(predicted_tokens, predicted_words)
+            else:
+                sequence = sb.decoders.ctc_greedy_decode(
+                    p_ctc, wav_lens, blank_id=self.hparams.blank_index
+                )
+                predicted_words = self.tokenizer(sequence, task="decode_from_list")
 
             # Convert indices to words
             target_words = undo_padding(tokens, tokens_lens)
@@ -292,7 +299,6 @@ def dataio_prepare(hparams, tokenizer):
     return train_data, valid_data, test_data
 
 
-
 if __name__ == "__main__":
 
     # CLI:
@@ -353,6 +359,20 @@ if __name__ == "__main__":
 
     # Adding objects to trainer.
     asr_brain.tokenizer = tokenizer
+
+    # Decoding scheme
+    if not hparams["use_lm"]:
+        hparams["train_logger"].log_stats(
+        stats_meta={
+            "Using CTC greedy decoding scheme" : hparams["use_lm"]
+            }
+        )
+    else:
+        hparams["train_logger"].log_stats(
+        stats_meta={
+            "Using BeamSearch and pre-trained LM for decoding" : hparams["use_lm"]
+            }
+        )
 
     # Training
     asr_brain.fit(
