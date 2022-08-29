@@ -25,6 +25,13 @@ accented_letters: True
 language: de
 skip_prep: False
 
+# Data files
+# noise/ris dataset will automatically be downloaded
+data_folder_rirs: !ref <csv_dir>
+train_csv: !ref <csv_dir>/train.csv
+valid_csv: !ref <csv_dir>/dev.csv
+test_csv: !ref <csv_dir>/test.csv
+
 # We remove utterance slonger than 10s in the train/dev/test sets as
 # longer sentences certainly correspond to "open microphones".
 avoid_if_longer_than: 10.0
