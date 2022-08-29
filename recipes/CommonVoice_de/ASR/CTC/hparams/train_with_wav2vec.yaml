@@ -1,7 +1,10 @@
-# ################################
+################################
 # Model: wav2vec2 + DNN + CTC
 # Augmentation: SpecAugment
-# Authors: Sung-Lin Yeh 2021
+# Authors: Titouan Parcollet 2021
+#          Mirco Ravanelli 2021
+#          Sangeet Sagar 2022 (minor edits)
+# Language: German (DE)
 # ################################
 
 # Seed needs to be set at top of yaml, before objects with parameters are made
@@ -21,17 +24,6 @@ test_tsv_file: !ref <data_folder>/test.tsv
 accented_letters: True
 language: de
 skip_prep: False
-
-# Data files
-# noise/ris dataset will automatically be downloaded
-data_folder_rirs: !ref <csv_dir>
-train_csv: !ref <csv_dir>/train.csv
-valid_csv: !ref <csv_dir>/dev.csv
-test_csv: !ref <csv_dir>/test.csv
-
-# Pre-trained language model
-pretrained_lm_path: ../../LM/results/RNN/1995/save/CKPT+2022-08-18+16-30-43+00/
-use_lm: True
 
 # We remove utterance slonger than 10s in the train/dev/test sets as
 # longer sentences certainly correspond to "open microphones".
@@ -61,54 +53,18 @@ test_dataloader_options:
    num_workers: !ref <num_workers>
 
 # BPE parameters
-token_type: char  # ["unigram", "bpe", "char"]
-character_coverage: 1.0
-
-# Model parameters
-dnn_neurons: 1024
-wav2vec_output_dim: !ref <dnn_neurons>
-emb_size: 128
-output_neurons: 32  # BPE size, index(blank/eos/bos) = 0
-
-# Decoding parameters
 # Be sure that the bos and eos index match with the BPEs ones
 blank_index: 0
 bos_index: 1
 eos_index: 2
+token_type: char  # ["unigram", "bpe", "char"]
 
-# Decoding params when using S2S-RNN-BeamSearchLM
-dropout_rate: 0.1
-dec_neurons: 1024
-dec_rnn_type: gru
-dec_attn_type: location
-dec_attn_dim: 1024
-dec_channels: 10
-dec_kernel: 100
-dec_layers: 1
-dec_dropout: !ref <dropout_rate>
+# Model parameters
+dnn_neurons: 1024
+wav2vec_output_dim: !ref <dnn_neurons>
+output_neurons: 32  # BPE size, index(blank/eos/bos) = 0
 
-# Decoder hyper-params
-min_decode_ratio: 0.0   
-max_decode_ratio: 1.0   # hyper-param fine-tuning
-beam_size: 100      # hyper-param fine-tuning
-eos_threshold: 1.5
-using_max_attn_shift: True
-max_attn_shift: 240
-lm_weight: 0.50         # hyper-param fine-tuning
-ctc_weight_decode: 0.0  # hyper-param fine-tuning
-coverage_penalty: 1.5
-temperature: 1.25
-temperature_lm: 1.25
-
-# Language model params
-lm_emb_size: 128
-lm_dropout: 0.0
-lm_rnn_layers: 2
-lm_rnn_neurons: 2048
-lm_dnn_blocks: 1
-lm_dnn_neurons: 512
-
-# Functions and classes
+# Functions and classes   
 epoch_counter: !new:speechbrain.utils.epoch_loop.EpochCounter
    limit: !ref <number_of_epochs>
 
@@ -138,25 +94,11 @@ enc: !new:speechbrain.nnet.containers.Sequential
    bn3: !name:speechbrain.nnet.normalization.BatchNorm1d
    activation3: !new:torch.nn.LeakyReLU
 
-emb: !new:speechbrain.nnet.embedding.Embedding
-   num_embeddings: !ref <output_neurons>
-   embedding_dim: !ref <emb_size>
 
-dec: !new:speechbrain.nnet.RNN.AttentionalRNNDecoder
-   rnn_type: !ref <dec_rnn_type>
-   attn_type: !ref <dec_attn_type>
-   enc_dim: !ref <dnn_neurons>
-   input_size: !ref <emb_size>
-   hidden_size: !ref <dec_neurons>
-   attn_dim: !ref <dec_attn_dim>
-   channels: !ref <dec_channels>
-   kernel_size: !ref <dec_kernel>
-   num_layers: !ref <dec_layers>
-   dropout: !ref <dec_dropout>
-
-# URL for the Fairseq multilingual wav2vec2 model.
+# URL for the Fairseq wav2vec2 model.
 freeze_wav2vec: False
-wav2vec2_hub: ../../pre-trained/wav2vec2-large-xlsr-53
+# wav2vec2_hub: facebook/wav2vec2-large-xlsr-53-german
+wav2vec2_hub: ../../pre-trained/wav2vec2-large-xlsr-53-german  # Either provide a local path or huggingface URL
 wav2vec2: !new:speechbrain.lobes.models.huggingface_wav2vec.HuggingFaceWav2Vec2
    source: !ref <wav2vec2_hub>
    output_norm: True
@@ -179,40 +121,19 @@ ctc_lin: !new:speechbrain.nnet.linear.Linear
    input_size: !ref <dnn_neurons>
    n_neurons: !ref <output_neurons>
 
-seq_lin: !new:speechbrain.nnet.linear.Linear
-   input_size: !ref <dec_neurons>
-   n_neurons: !ref <output_neurons>
-
 log_softmax: !new:speechbrain.nnet.activations.Softmax
    apply_log: True
 
 ctc_cost: !name:speechbrain.nnet.losses.ctc_loss
    blank_index: !ref <blank_index>
 
-# This is the RNNLM that is used according to the Huggingface repository
-# NB: It has to match the pre-trained RNNLM!!
-lm_model: !new:speechbrain.lobes.models.RNNLM.RNNLM
-   output_neurons: !ref <output_neurons>
-   embedding_dim: !ref <emb_size>
-   activation: !name:torch.nn.LeakyReLU
-   dropout: !ref <lm_dropout>
-   rnn_layers: !ref <lm_rnn_layers>
-   rnn_neurons: !ref <lm_rnn_neurons>
-   dnn_blocks: !ref <lm_dnn_blocks>
-   dnn_neurons: !ref <lm_dnn_neurons>
-   return_hidden: True
-
 modules:
    wav2vec2: !ref <wav2vec2>
    enc: !ref <enc>
-   emb: !ref <emb>
-   dec: !ref <dec>
    ctc_lin: !ref <ctc_lin>
-   seq_lin: !ref <seq_lin>
-   lm_model: !ref <lm_model>
 
 model: !new:torch.nn.ModuleList
-   - [!ref <enc>,  !ref <ctc_lin>]
+   - [!ref <enc>, !ref <ctc_lin>]
 
 model_opt_class: !name:torch.optim.Adadelta
    lr: !ref <lr>
@@ -221,26 +142,6 @@ model_opt_class: !name:torch.optim.Adadelta
 
 wav2vec_opt_class: !name:torch.optim.Adam
    lr: !ref <lr_wav2vec>
-
-beam_searcher: !new:speechbrain.decoders.S2SRNNBeamSearchLM
-   embedding: !ref <emb>
-   decoder: !ref <dec>
-   linear: !ref <seq_lin>
-   language_model: !ref <lm_model>
-   bos_index: 0
-   eos_index: 0
-   # blank_index: !ref <blank_index>
-   min_decode_ratio: !ref <min_decode_ratio>
-   max_decode_ratio: !ref <max_decode_ratio>
-   beam_size: !ref <beam_size>
-   eos_threshold: !ref <eos_threshold>
-   using_max_attn_shift: !ref <using_max_attn_shift>
-   max_attn_shift: !ref <max_attn_shift>
-   coverage_penalty: !ref <coverage_penalty>
-   lm_weight: !ref <lm_weight>
-   ctc_weight: !ref <ctc_weight_decode>
-   temperature: !ref <temperature>
-   temperature_lm: !ref <temperature_lm>
 
 lr_annealing_model: !new:speechbrain.nnet.schedulers.NewBobScheduler
    initial_value: !ref <lr>
@@ -270,10 +171,3 @@ error_rate_computer: !name:speechbrain.utils.metric_stats.ErrorRateStats
 
 cer_computer: !name:speechbrain.utils.metric_stats.ErrorRateStats
    split_tokens: True
-
-pretrainer: !new:speechbrain.utils.parameter_transfer.Pretrainer
-   collect_in: !ref <save_folder>
-   loadables:
-      lm: !ref <lm_model>
-   paths:
-      lm: !ref <pretrained_lm_path>/model.ckpt

@@ -44,4 +44,3 @@ epoch: 43, time: 00:38, lr_model: 9.22e-03, lr_wav2vec: 1.09e-05 - train loss: 1
 epoch: 44, time: 06:00:13, lr_model: 7.38e-03, lr_wav2vec: 9.85e-06 - train loss: 1.56e-02 - valid loss: 1.28e-01, valid CER: 1.91, valid WER: 8.04
 epoch: 45, time: 05:58:56, lr_model: 5.90e-03, lr_wav2vec: 8.86e-06 - train loss: 1.51e-02 - valid loss: 1.29e-01, valid CER: 1.90, valid WER: 8.02
 Epoch loaded: 45 - test loss: 1.59e-01, test CER: 2.40, test WER: 9.54
-Epoch loaded: 45 - test loss: 1.59e-01, test CER: 2.40, test WER: 9.54
