@@ -28,7 +28,8 @@ valid_csv: !ref <csv_dir>/dev.csv
 token_output: 1000  # index(blank/eos/bos/unk) = 0
 character_coverage: 1.0
 csv_read: wrd
-
+bos_id: -1
+eos_id: -1
 
 tokenizer: !name:speechbrain.tokenizers.SentencePiece.SentencePiece
    model_dir: !ref <output_folder>
@@ -38,3 +39,5 @@ tokenizer: !name:speechbrain.tokenizers.SentencePiece.SentencePiece
    model_type: !ref <token_type> # ["unigram", "bpe", "char"]
    character_coverage: !ref <character_coverage>
    annotation_list_to_check: [!ref <train_csv>, !ref <valid_csv>]
+   bos_id: !ref <bos_id>
+   eos_id: !ref <eos_id>
