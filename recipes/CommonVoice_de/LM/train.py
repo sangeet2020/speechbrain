@@ -68,7 +68,7 @@ class LM(sb.core.Brain):
 
     def on_stage_end(self, stage, stage_loss, epoch, tr_time):
         """Gets called at the end of a epoch."""
-        stage_stats = {"time": tr_time, "loss": stage_loss}
+        stage_stats = {"loss": stage_loss}
         if stage == sb.Stage.TRAIN:
             self.train_stats = stage_stats
 
@@ -88,7 +88,7 @@ class LM(sb.core.Brain):
                 old_lr = self.hparams.lr_annealing.current_lr
 
             self.hparams.train_logger.log_stats(
-                stats_meta={"epoch": epoch, "lr": old_lr},
+                stats_meta={"epoch": epoch, "time": tr_time, "lr": old_lr},
                 train_stats=self.train_stats,
                 valid_stats=stage_stats,
             )

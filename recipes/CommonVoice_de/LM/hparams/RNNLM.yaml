@@ -25,7 +25,7 @@ lm_corpus_path: !ref lm_corpus/orignal_data/de_lm_normalized.txt    # 17M senten
 
 
 # Tokenizer model
-tokenizer_file: !ref ../Tokenizer/results/char/32_char.model
+tokenizer_file: !ref ../Tokenizer/results/unigram/1000_unigram.model
 
 # Training parameters
 number_of_epochs: 20
@@ -55,8 +55,8 @@ dnn_blocks: 1
 dnn_neurons: 512
 
 # Outputs
-output_neurons: 32 # index(blank/eos/bos) = 0 | char: 32 | unigram: 1000
-# blank_index: 0
+output_neurons: 1000 # index(blank/eos/bos) = 0/1/2 | char: 34 | unigram: 1000
+blank_index: 0
 bos_index: 0
 eos_index: 0
 
