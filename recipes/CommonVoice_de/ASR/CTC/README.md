@@ -11,7 +11,7 @@ Make sure you have "transformers" installed in your environment (see extra-requi
 
 | Release | hyperparams file | Test CER | Test WER | HuggingFace link | Full model link | GPUs |
 |:-------------:|:---------------------------:| :-----:| :-----:| :-----:| :-----:| :--------:|
-| 09-09-21 | train_with_wav2vec.yaml | 2.40 | 9.54 | Not Avail. | [Link](https://drive.google.com/drive/u/1/folders/1hag_U5gNT-GOrWEkr_yPbd2RtBP8OCcm) | 1xRTXA6000 48GB |
+| 08-16-22 | train_with_wav2vec.yaml | 2.40 | 9.54 | Not Avail. | [Link](https://drive.google.com/drive/u/1/folders/1hag_U5gNT-GOrWEkr_yPbd2RtBP8OCcm) | 1xRTXA6000 48GB |
 
 # Training Time
 It takes about 5.5 hours for an epoch on a 1xRTXA6000 48GB.
