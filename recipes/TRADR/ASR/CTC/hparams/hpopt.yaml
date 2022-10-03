@@ -1,0 +1,4 @@
+number_of_epochs: 1
+ckpt_enable: false
+trial_id: hpopt
+output_folder: !ref results/train_wav2vec2_char/<trial_id>
