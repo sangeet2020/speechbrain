@@ -35,6 +35,8 @@ import logging
 from speechbrain.processing.features import spectral_magnitude
 from speechbrain.utils.metric_stats import MetricStats
 from pesq import pesq
+import pdb
+from pprint import pprint
 
 
 # Define training procedure
@@ -47,6 +49,7 @@ class Separation(sb.Brain):
         mix, mix_lens = mix.to(self.device), mix_lens.to(self.device)
 
         # Convert targets to tensor
+        pdb.set_trace()
         targets = torch.cat(
             [targets[i][0].unsqueeze(-1) for i in range(self.hparams.num_spks)],
             dim=-1,
@@ -55,6 +58,7 @@ class Separation(sb.Brain):
         # Add speech distortions
         if stage == sb.Stage.TRAIN:
             with torch.no_grad():
+                pdb.set_trace()
                 if self.hparams.use_speedperturb or self.hparams.use_rand_shift:
                     mix, targets = self.add_speed_perturb(targets, mix_lens)
 
@@ -155,7 +159,7 @@ class Separation(sb.Brain):
         targets = [batch.s1_sig, batch.s2_sig]
         noise = batch.noise_sig[0]
 
-        if self.auto_mix_prec:
+        if self.auto_mix_prec:  # True
             with autocast():
                 predictions, targets = self.compute_forward(
                     mixture, targets, sb.Stage.TRAIN, noise
@@ -273,7 +277,7 @@ class Separation(sb.Brain):
                 metric=pesq_eval, n_jobs=1, batch_eval=False
             )
 
-    def on_stage_end(self, stage, stage_loss, epoch):
+    def on_stage_end(self, stage, stage_loss, epoch, tr_time):
         """Gets called at the end of a epoch."""
         # Compute/store important stats
         stage_stats = {"loss": stage_loss}
@@ -301,7 +305,11 @@ class Separation(sb.Brain):
                 current_lr = self.hparams.optimizer.optim.param_groups[0]["lr"]
 
             self.hparams.train_logger.log_stats(
-                stats_meta={"epoch": epoch, "lr": current_lr},
+                stats_meta={
+                    "epoch": epoch, 
+                    "time" : tr_time,
+                    "lr": current_lr
+                    },
                 train_stats=self.train_stats,
                 valid_stats=stats,
             )
@@ -322,7 +330,7 @@ class Separation(sb.Brain):
 
     def add_speed_perturb(self, targets, targ_lens):
         """Adds speed perturbation and random_shift to the input signals"""
-
+        
         min_len = -1
         recombine = False
 
@@ -332,6 +340,7 @@ class Separation(sb.Brain):
             recombine = True
 
             for i in range(targets.shape[-1]):
+                pdb.set_trace()
                 new_target = self.hparams.speedperturb(
                     targets[:, :, i], targ_lens
                 )
@@ -397,7 +406,6 @@ class Separation(sb.Brain):
     def save_results(self, test_data):
         """This script computes the SDR and SI-SNR metrics and saves
         them into a csv file"""
-
         # This package is required for SDR computation
         from mir_eval.separation import bss_eval_sources
 
@@ -509,7 +517,7 @@ class Separation(sb.Brain):
 
     def save_audio(self, snt_id, mixture, targets, predictions):
         "saves the test audio (mixture, targets, and estimated sources) on disk"
-
+        print("Saving enhanced sources")
         # Create outout folder
         save_path = os.path.join(self.hparams.save_folder, "audio_results")
         if not os.path.exists(save_path):
@@ -544,7 +552,6 @@ class Separation(sb.Brain):
 
 def dataio_prep(hparams):
     """Creates data processing pipeline"""
-
     # 1. Define datasets
     train_data = sb.dataio.dataset.DynamicItemDataset.from_csv(
         csv_path=hparams["train_data"],
@@ -633,7 +640,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # Data preparation
-    from recipes.WHAMandWHAMR.prepare_data import prepare_wham_whamr_csv
+    from prepare_data import prepare_wham_whamr_csv
 
     run_on_main(
         prepare_wham_whamr_csv,
@@ -645,15 +652,16 @@ if __name__ == "__main__":
             "task": hparams["task"],
         },
     )
-
+    
+    
     # if whamr, and we do speedaugment we need to prepare the csv file
     if "whamr" in hparams["data_folder"] and hparams["use_speedperturb"]:
-        from recipes.WHAMandWHAMR.prepare_data import create_whamr_rir_csv
-        from recipes.WHAMandWHAMR.meta.create_whamr_rirs import create_rirs
+        from prepare_data import create_whamr_rir_csv
+        from create_whamr_rirs import create_rirs
 
         # If the Room Impulse Responses do not exist, we create them
         if not os.path.exists(hparams["rir_path"]):
-            print("Createing Room Impulse Responses...")
+            print("Creating Room Impulse Responses...")
             run_on_main(
                 create_rirs,
                 kwargs={
@@ -669,7 +677,8 @@ if __name__ == "__main__":
                 "savepath": hparams["save_folder"],
             },
         )
-
+        
+        # Convolves an audio signal with an impulse response.
         hparams["reverb"] = sb.processing.speech_augmentation.AddReverb(
             os.path.join(hparams["save_folder"], "whamr_rirs.csv")
         )
@@ -738,6 +747,7 @@ if __name__ == "__main__":
     else:
         train_data, valid_data, test_data = dataio_prep(hparams)
 
+        
     # Load pretrained model if pretrained_separator is present in the yaml
     if "pretrained_separator" in hparams:
         run_on_main(hparams["pretrained_separator"].collect_files)

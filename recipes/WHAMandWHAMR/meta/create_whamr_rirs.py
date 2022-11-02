@@ -9,6 +9,8 @@ import pandas as pd
 import argparse
 import torchaudio
 
+import sys
+sys.path.append("../../../") 
 from recipes.WHAMandWHAMR.meta.wham_room import WhamRoom
 from scipy.signal import resample_poly
 import torch
@@ -28,7 +30,6 @@ def create_rirs(output_dir, sr=8000):
     sr (int) : sampling rate with which we save
 
     """
-
     assert (
         pyroomacoustics.__version__ == "0.3.1"
     ), "The pyroomacoustics version needs to be 0.3.1"
@@ -67,18 +68,20 @@ def create_rirs(output_dir, sr=8000):
 
     for splt in SPLITS:
 
-        wsjmix_path = FILELIST_STUB.format(splt)
-        wsjmix_df = pd.read_csv(wsjmix_path)
+        wsjmix_path = FILELIST_STUB.format(splt) # meta/data/mix_2_spk_filenames_tr.csv
+        wsjmix_df = pd.read_csv(wsjmix_path)    # Shape: (20000, 3)
 
-        reverb_param_path = reverb_param_stub.format(splt)
-        reverb_param_df = pd.read_csv(reverb_param_path)
-
+        reverb_param_path = reverb_param_stub.format(splt)  # meta/data/reverb_params_tr.csv
+        reverb_param_df = pd.read_csv(reverb_param_path)    # Shape: (20000, 16)
+        # reverb_param_dict = reverb_param_df.set_index("utterance_id").to_dict("index")
+        
         utt_ids = wsjmix_df.output_filename.values
 
         for output_name in tqdm(utt_ids):
             utt_row = reverb_param_df[
                 reverb_param_df["utterance_id"] == output_name
             ]
+            # Format: p, mics, s1, s2, T60
             room = WhamRoom(
                 [
                     utt_row["room_x"].iloc[0],

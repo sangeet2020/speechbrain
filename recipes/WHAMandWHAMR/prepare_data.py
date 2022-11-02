@@ -7,7 +7,7 @@ The .csv preperation functions for WSJ0-Mix.
 
 import os
 import csv
-
+import pdb
 
 def prepare_wham_whamr_csv(
     datapath, savepath, skip_prep=False, fs=8000, task="separation"
@@ -21,7 +21,6 @@ def prepare_wham_whamr_csv(
         savepath (str) : path where we save the csv file.
         skip_prep (bool): If True, skip data preparation
     """
-
     if skip_prep:
         return
 
@@ -66,6 +65,7 @@ def create_wham_whamr_csv(
         savename (str) : the prefix to use for the .csv files
         set_types (list) : the sets to create
     """
+    
     if fs == 8000:
         sample_rate = "8k"
     elif fs == 16000:
@@ -90,7 +90,18 @@ def create_wham_whamr_csv(
             mix_both = "mix_both/" if task == "separation" else "mix_single/"
             s1 = "s1/"
             s2 = "s2/"
-
+        
+        ### For training and cv.
+        # mix_path >> whamr/wav16k/min/tr/mix_single_reverb/' (tr:20K, cv:5K)
+        
+        # s1_path (tr) >> whamr/wav16k/min/tr/s1_anechoic/' (tr:20K)
+        # s1_path (cv) >> whamr/wav16k/min/tr/s1_reverb/' (cv:5K)
+        
+        # s2_path (tr) >> whamr/wav16k/min/tr/s2_anechoic/' (tr:20K)
+        # s2_path (cv) >> whamr/wav16k/min/tr/s1_reverb/' (cv:5K)
+        
+        # noise_path >> whamr/wav16k/min/tr/noise/' (tr:20K, cv:5K)
+        
         mix_path = os.path.join(
             datapath, "wav{}".format(sample_rate), version, set_type, mix_both,
         )
@@ -106,9 +117,10 @@ def create_wham_whamr_csv(
         # rir_path = os.path.join(
         #     datapath, "wav{}".format(sample_rate), version, set_type, "rirs/"
         # )
-
+        # import pdb; pdb.set_trace()
         files = os.listdir(mix_path)
 
+        # obtain fullpath of all.
         mix_fl_paths = [mix_path + fl for fl in files]
         s1_fl_paths = [s1_path + fl for fl in files]
         s2_fl_paths = [s2_path + fl for fl in files]
@@ -180,12 +192,13 @@ def create_whamr_rir_csv(datapath, savepath):
         datapath (str) : path for the whamr rirs.
         savepath (str) : path where we save the csv file
     """
-
     csv_columns = ["ID", "duration", "wav", "wav_format", "wav_opts"]
 
     files = os.listdir(datapath)
     all_paths = [os.path.join(datapath, fl) for fl in files]
 
+    # Skip create whamr_rirs.csv for every seed
+    # if not os.path.isfile("../WHAMR_RIRS/whamr_rirs.csv"):
     with open(savepath + "/whamr_rirs.csv", "w") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
         writer.writeheader()

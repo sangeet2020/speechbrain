@@ -15,7 +15,7 @@ __set_seed: !apply:torch.manual_seed [!ref <seed>]
 # the data folder for the wham dataset
 # data_folder needs to follow the format:  /yourpath/whamr.
 # make sure to use the name whamr at your top folder for the dataset!
-data_folder: /yourpath/whamr
+data_folder: /netscratch/sagar/data/WHAMR/whamr/ #wav16k/
 task: enhancement
 dereverberate: True
 
@@ -23,7 +23,7 @@ dereverberate: True
 # e.g. /yourpath/wsj0-processed/si_tr_s/
 # you need to convert the original wsj0 to 8k
 # you can do this conversion with the script ../meta/preprocess_dynamic_mixing.py
-base_folder_dm: /yourpath/wsj0-processed/si_tr_s/
+base_folder_dm: /netscratch/sagar/data/WHAMR/WSJ5K_16K/wsj0/si_tr_s/ #/yourpath/wsj0-processed/si_tr_s/
 
 experiment_name: sepformer-whamr-enhancement
 output_folder: !ref results/<experiment_name>/<seed>
@@ -65,7 +65,7 @@ dynamic_mixing: False
 # rir_path variable points to the directory of the room impulse responses
 # e.g. /miniscratch/subakany/rir_wavs
 # If the path does not exist, it is created automatically.
-rir_path: !PLACEHOLDER
+rir_path: /netscratch/sagar/data/RIR_WAVS
 
 use_wavedrop: False
 use_speedperturb: True
