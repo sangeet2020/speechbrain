@@ -3,7 +3,7 @@ Author
  * Sangeet Sagar 2022
 
 Download instructions: https://github.com/microsoft/DNS-Challenge
-The CSV files preperation for Deep Noise 
+The CSV files preperation for Deep Noise
 Suppression (DNS) Challenge 4 - ICASSP 2022
 """
 
@@ -223,7 +223,7 @@ def extract_files(datapath, type=None):
     return files
 
 
-def train_dev_split(clean_data, noise_data, noisy_data, split_size=0.01):
+def train_dev_split(clean_data, noise_data, noisy_data, split_size=0.005):
     # We dont shuffle or perform raondom split, since the dataset was generated
     # randomly in the first place.
     dataset = list(zip(clean_data, noise_data, noisy_data))

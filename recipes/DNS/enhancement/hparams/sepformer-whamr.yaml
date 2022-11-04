@@ -15,7 +15,7 @@ __set_seed: !apply:torch.manual_seed [!ref <seed>]
 # the data folder for the wham dataset
 # data_folder needs to follow the format:  /yourpath/whamr.
 # make sure to use the name whamr at your top folder for the dataset!
-data_folder: /netscratch/sagar/data/Microsoft-DNS/datasets/
+data_folder: /netscratch/sagar/data/Microsoft-DNS/datasets_4s/
 baseline_noisy_folder: /netscratch/sagar/data/Microsoft-DNS/datasets/dev_testset/noisy_testclips
 baseline_enhanced_folder: /netscratch/sagar/data/Microsoft-DNS/datasets/dev_testset/baseline_enhanced_testclips
 task: enhancement
@@ -57,7 +57,7 @@ lr: 0.00015
 clip_grad_norm: 5
 loss_upper_lim: 999999  # this is the upper limit for an acceptable loss
 # if True, the training sequences are cut to a specified length
-limit_training_signal_len: True
+limit_training_signal_len: False
 # this is the length of sequences if we choose to limit
 # the signal length of training sequences
 training_signal_len: 64000 # max_len=480 000
