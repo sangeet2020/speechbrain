@@ -1,0 +1,3 @@
+epoch: 1, time: 00:01, lr: 1.00e+00 - train loss: 5.96 - valid loss: 2.28, valid CER: 26.04, valid WER: 50.00
+epoch: 2, time: 00:00, lr: 1.00e+00 - train loss: 3.73 - valid loss: 2.45, valid CER: 31.25, valid WER: 51.72
+Epoch loaded: 2 - test loss: 2.28, test CER: 32.20, test WER: 47.17

@@ -1,0 +1,21 @@
+epoch: 1, time: 00:16, lr: 1.00e-01 - train loss: 3.82 - valid loss: 1.90, valid CER: 23.74, valid WER: 48.19
+epoch: 2, time: 00:19, lr: 1.00e-01 - train loss: 2.57 - valid loss: 1.73, valid CER: 19.72, valid WER: 40.95
+epoch: 3, time: 00:20, lr: 1.00e-01 - train loss: 2.14 - valid loss: 1.66, valid CER: 19.92, valid WER: 37.66
+epoch: 4, time: 00:15, lr: 1.00e-01 - train loss: 1.93 - valid loss: 1.64, valid CER: 17.66, valid WER: 34.54
+epoch: 5, time: 00:15, lr: 1.00e-01 - train loss: 1.67 - valid loss: 1.59, valid CER: 17.10, valid WER: 34.05
+epoch: 6, time: 00:17, lr: 1.00e-01 - train loss: 1.64 - valid loss: 1.55, valid CER: 14.68, valid WER: 31.25
+epoch: 7, time: 00:18, lr: 1.00e-01 - train loss: 1.53 - valid loss: 1.51, valid CER: 21.35, valid WER: 37.99
+epoch: 8, time: 00:16, lr: 8.00e-02 - train loss: 1.47 - valid loss: 1.50, valid CER: 20.51, valid WER: 37.83
+epoch: 9, time: 00:16, lr: 8.00e-02 - train loss: 1.43 - valid loss: 1.49, valid CER: 19.31, valid WER: 35.86
+epoch: 10, time: 00:16, lr: 8.00e-02 - train loss: 1.40 - valid loss: 1.48, valid CER: 20.64, valid WER: 37.83
+epoch: 11, time: 00:19, lr: 6.40e-02 - train loss: 1.37 - valid loss: 1.48, valid CER: 21.68, valid WER: 37.83
+epoch: 12, time: 00:16, lr: 5.12e-02 - train loss: 1.34 - valid loss: 1.47, valid CER: 21.65, valid WER: 37.66
+epoch: 13, time: 00:16, lr: 5.12e-02 - train loss: 1.32 - valid loss: 1.47, valid CER: 23.46, valid WER: 39.14
+epoch: 14, time: 00:18, lr: 4.10e-02 - train loss: 1.32 - valid loss: 1.47, valid CER: 23.00, valid WER: 38.82
+epoch: 15, time: 00:16, lr: 4.10e-02 - train loss: 1.30 - valid loss: 1.46, valid CER: 22.34, valid WER: 39.14
+epoch: 16, time: 00:17, lr: 3.28e-02 - train loss: 1.29 - valid loss: 1.46, valid CER: 21.65, valid WER: 38.16
+epoch: 17, time: 00:18, lr: 3.28e-02 - train loss: 1.31 - valid loss: 1.46, valid CER: 21.60, valid WER: 37.66
+epoch: 18, time: 00:19, lr: 3.28e-02 - train loss: 1.28 - valid loss: 1.46, valid CER: 20.81, valid WER: 36.84
+epoch: 19, time: 00:14, lr: 3.28e-02 - train loss: 1.27 - valid loss: 1.46, valid CER: 15.73, valid WER: 30.10
+epoch: 20, time: 00:17, lr: 3.28e-02 - train loss: 1.26 - valid loss: 1.46, valid CER: 15.55, valid WER: 29.93
+Epoch loaded: 20 - test loss: 1.46, test CER: 18.62, test WER: 28.83

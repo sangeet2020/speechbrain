@@ -1,0 +1,21 @@
+epoch: 1, time: 00:44, lr: 1.00e-04 - train loss: 5.26 - valid loss: 5.89
+epoch: 2, time: 00:44, lr: 1.00e-04 - train loss: 4.54 - valid loss: 5.68
+epoch: 3, time: 00:45, lr: 1.00e-04 - train loss: 4.22 - valid loss: 5.56
+epoch: 4, time: 00:44, lr: 1.00e-04 - train loss: 3.98 - valid loss: 5.49
+epoch: 5, time: 00:44, lr: 1.00e-04 - train loss: 3.79 - valid loss: 5.43
+epoch: 6, time: 00:44, lr: 1.00e-04 - train loss: 3.61 - valid loss: 5.37
+epoch: 7, time: 00:44, lr: 1.00e-04 - train loss: 3.45 - valid loss: 5.36
+epoch: 8, time: 00:44, lr: 8.00e-05 - train loss: 3.29 - valid loss: 5.36
+epoch: 9, time: 00:44, lr: 6.40e-05 - train loss: 3.16 - valid loss: 5.35
+epoch: 10, time: 00:44, lr: 5.12e-05 - train loss: 3.04 - valid loss: 5.37
+epoch: 11, time: 00:44, lr: 4.10e-05 - train loss: 2.95 - valid loss: 5.38
+epoch: 12, time: 00:44, lr: 3.28e-05 - train loss: 2.87 - valid loss: 5.42
+epoch: 13, time: 00:45, lr: 2.62e-05 - train loss: 2.81 - valid loss: 5.42
+epoch: 14, time: 00:44, lr: 2.10e-05 - train loss: 2.76 - valid loss: 5.43
+epoch: 15, time: 00:44, lr: 1.68e-05 - train loss: 2.72 - valid loss: 5.45
+epoch: 16, time: 00:44, lr: 1.34e-05 - train loss: 2.68 - valid loss: 5.46
+epoch: 17, time: 00:44, lr: 1.07e-05 - train loss: 2.65 - valid loss: 5.47
+epoch: 18, time: 00:44, lr: 8.59e-06 - train loss: 2.63 - valid loss: 5.48
+epoch: 19, time: 00:44, lr: 6.87e-06 - train loss: 2.61 - valid loss: 5.48
+epoch: 20, time: 00:44, lr: 5.50e-06 - train loss: 2.59 - valid loss: 5.49
+Epoch loaded: 9 - test loss: 5.19

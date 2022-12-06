@@ -1,0 +1,315 @@
+# Generated 2022-12-06 from:
+# /netscratch/sagar/thesis/speechbrain/recipes/SAR/ASR/seq2seq/hparams/train.yaml
+# yamllint disable
+# ############################################################################
+# Model: E2E ASR with attention-based ASR
+# Encoder: CRDNN model
+# Decoder: GRU + beamsearch + RNNLM
+# Tokens: BPE with unigram
+# losses: CTC + NLL
+# Fine-tuning: SAR domain dataset 100 mins
+# Authors: Ju-Chieh Chou, Mirco Ravanelli, Abdel Heba, Peter Plantinga,
+# Samuele Cornell 2020, Sangeet Sagar 2022
+# ############################################################################
+
+# Seed needs to be set at top of yaml, before objects with parameters
+seed: 8201
+dataset: viersen
+__set_seed: !apply:torch.manual_seed [8201]
+output_folder: results/viersen/CRDNN_seq2seq/8201
+wer_file: results/viersen/CRDNN_seq2seq/8201/wer.txt
+save_folder: results/viersen/CRDNN_seq2seq/8201/save
+train_log: results/viersen/CRDNN_seq2seq/8201/train_log.txt
+
+# Language model (LM) pretraining
+# NB: To avoid mismatch, the speech recognizer must be trained with the same
+# tokenizer used for LM training. Here, we download everything from the
+# speechbrain HuggingFace repository. However, a local path pointing to a
+# directory containing the lm.ckpt and tokenizer.ckpt may also be specified
+# instead. E.g if you want to use your own LM / tokenizer.
+# We have bos/eos id 0/0 so we use the same tokenizer and LM that uses bos
+# id and eos id as 0/0.
+pretrained_models_path: ../../pre-trained/crdnn_commonvoice/
+# LM fine-tuned on SAR domain train data + Feuer and Flamme transcripts
+# Alternatively you can also use the pre-trained LM 
+# present on `pretrained_models_path`
+finetuned_lm: ../../pre-trained/fine-tuned-LM/unigram/
+
+# Data files
+# Dataset prep parameters
+data_folder: ../../dataset/viersen_dataset
+csv_dir: ../../csv_files/viersen
+train_tsv_file: ../../dataset/viersen_dataset/train.tsv
+dev_tsv_file: ../../dataset/viersen_dataset/dev.tsv
+test_tsv_file: ../../dataset/viersen_dataset/test.tsv
+accented_letters: true
+language: de
+train_csv: ../../csv_files/viersen/train.csv
+valid_csv: ../../csv_files/viersen/dev.csv
+test_csv: ../../csv_files/viersen/test.csv
+skip_prep: false
+# where to store noisy data for augment (change it if needed)
+data_folder_rirs: RIRs
+
+# Training parameters
+number_of_epochs: 20
+number_of_ctc_epochs: 5
+batch_size: 8
+valid_batch_size: 8
+test_batch_size: 8
+lr: 1
+ctc_weight: 1
+sorting: ascending
+dynamic_batching: false
+
+# dynamic batching parameters, if used
+dynamic_batch_sampler:
+  feats_hop_size: 0.01
+  max_batch_len: 20000 # in terms of frames
+  shuffle_ex: true
+  batch_ordering: random
+  num_buckets: 20
+
+# Feature parameters
+sample_rate: 16000
+n_fft: 400
+n_mels: 40
+
+opt_class: !name:torch.optim.Adadelta
+  lr: 1
+  rho: 0.95
+  eps: 1.e-8
+
+# Dataloader options
+train_dataloader_opts:
+  batch_size: 8
+
+valid_dataloader_opts:
+  batch_size: 8
+
+test_dataloader_opts:
+  batch_size: 8
+
+# Model parameters
+activation: &id001 !name:torch.nn.LeakyReLU
+dropout: 0
+cnn_blocks: 2
+cnn_channels: (128, 256)
+inter_layer_pooling_size: (2, 2)
+cnn_kernelsize: (3, 3)
+time_pooling_size: 4
+rnn_class: &id002 !name:speechbrain.nnet.RNN.LSTM
+rnn_layers: 4
+rnn_neurons: 1024
+rnn_bidirectional: true
+dnn_blocks: 2
+dnn_neurons: 512
+emb_size: 128
+dec_neurons: 1024
+output_neurons: 1000 # Number of tokens (same as LM)
+blank_index: 0
+bos_index: 0
+eos_index: 0
+
+# Decoding parameters
+min_decode_ratio: 0.0
+max_decode_ratio: 1.0
+beam_size: 67
+eos_threshold: 1.5
+using_max_attn_shift: true
+max_attn_shift: 240
+lm_weight: 0
+ctc_weight_decode: 0.0
+coverage_penalty: 1.5
+temperature: 1.25
+temperature_lm: 1
+
+# Orion hparams. These will be used if we 
+# perform hyperparameter optimization using orion.
+hpopt_mode:
+hpopt:
+ckpt_enable: false
+trial_id: hpopt
+
+epoch_counter: &id013 !new:speechbrain.utils.epoch_loop.EpochCounter
+
+  limit: 20
+
+normalize: &id008 !new:speechbrain.processing.features.InputNormalization
+  norm_type: global
+
+compute_features: !new:speechbrain.lobes.features.Fbank
+  sample_rate: 16000
+  n_fft: 400
+  n_mels: 40
+
+env_corrupt: &id009 !new:speechbrain.lobes.augment.EnvCorrupt
+  openrir_folder: RIRs
+  babble_prob: 0.0
+  reverb_prob: 0.0
+  noise_prob: 1.0
+  noise_snr_low: 0
+  noise_snr_high: 15
+
+augmentation: !new:speechbrain.lobes.augment.TimeDomainSpecAugment
+  sample_rate: 16000
+  speeds: [95, 100, 105]
+
+enc: &id003 !new:speechbrain.lobes.models.CRDNN.CRDNN
+  input_shape: [null, null, 40]
+  activation: *id001
+  dropout: 0
+  cnn_blocks: 2
+  cnn_channels: (128, 256)
+  cnn_kernelsize: (3, 3)
+  inter_layer_pooling_size: (2, 2)
+  time_pooling: true
+  using_2d_pooling: false
+  time_pooling_size: 4
+  rnn_class: *id002
+  rnn_layers: 4
+  rnn_neurons: 1024
+  rnn_bidirectional: true
+  rnn_re_init: true
+  dnn_blocks: 2
+  dnn_neurons: 512
+  use_rnnp: false
+
+emb: &id004 !new:speechbrain.nnet.embedding.Embedding
+  num_embeddings: 1000
+  embedding_dim: 128
+
+dec: &id005 !new:speechbrain.nnet.RNN.AttentionalRNNDecoder
+  enc_dim: 512
+  input_size: 128
+  rnn_type: gru
+  attn_type: location
+  hidden_size: 1024
+  attn_dim: 1024
+  num_layers: 1
+  scaling: 1.0
+  channels: 10
+  kernel_size: 100
+  re_init: true
+  dropout: 0
+
+ctc_lin: &id006 !new:speechbrain.nnet.linear.Linear
+  input_size: 512
+  n_neurons: 1000
+
+seq_lin: &id007 !new:speechbrain.nnet.linear.Linear
+  input_size: 1024
+  n_neurons: 1000
+
+log_softmax: !new:speechbrain.nnet.activations.Softmax
+  apply_log: true
+
+ctc_cost: !name:speechbrain.nnet.losses.ctc_loss
+  blank_index: 0
+
+seq_cost: !name:speechbrain.nnet.losses.nll_loss
+  label_smoothing: 0.1
+
+# This is the RNNLM that is used according to the Huggingface repository
+# NB: It has to match the pre-trained RNNLM!!
+lm_model: &id010 !new:speechbrain.lobes.models.RNNLM.RNNLM
+
+  output_neurons: 1000
+  embedding_dim: 128
+  activation: !name:torch.nn.LeakyReLU
+  dropout: 0.0
+  rnn_layers: 2
+  rnn_neurons: 2048
+  dnn_blocks: 1
+  dnn_neurons: 512
+  return_hidden: true # For inference
+
+tokenizer: &id014 !new:sentencepiece.SentencePieceProcessor
+                                                     # Models
+
+modules:
+  enc: *id003
+  emb: *id004
+  dec: *id005
+  ctc_lin: *id006
+  seq_lin: *id007
+  normalize: *id008
+  env_corrupt: *id009
+  lm_model: *id010
+model: &id011 !new:torch.nn.ModuleList
+- [*id003, *id004, *id005, *id006, *id007]
+valid_search: !new:speechbrain.decoders.S2SRNNBeamSearcher
+  embedding: *id004
+  decoder: *id005
+  linear: *id007
+  ctc_linear: *id006
+  bos_index: 0
+  eos_index: 0
+  blank_index: 0
+  min_decode_ratio: 0.0
+  max_decode_ratio: 1.0
+  beam_size: 67
+  eos_threshold: 1.5
+  using_max_attn_shift: true
+  max_attn_shift: 240
+  coverage_penalty: 1.5
+  temperature: 1.25
+
+test_search: !new:speechbrain.decoders.S2SRNNBeamSearchLM
+  embedding: *id004
+  decoder: *id005
+  linear: *id007
+  ctc_linear: *id006
+  language_model: *id010
+  bos_index: 0
+  eos_index: 0
+  blank_index: 0
+  min_decode_ratio: 0.0
+  max_decode_ratio: 1.0
+  beam_size: 67
+  eos_threshold: 1.5
+  using_max_attn_shift: true
+  max_attn_shift: 240
+  coverage_penalty: 1.5
+  lm_weight: 0
+  ctc_weight: 0.0
+  temperature: 1.25
+  temperature_lm: 1
+
+lr_annealing: &id012 !new:speechbrain.nnet.schedulers.NewBobScheduler
+  initial_value: 1
+  improvement_threshold: 0.0025
+  annealing_factor: 0.8
+  patient: 0
+
+checkpointer: !new:speechbrain.utils.checkpoints.Checkpointer
+  checkpoints_dir: results/viersen/CRDNN_seq2seq/8201/save
+  recoverables:
+    model: *id011
+    scheduler: *id012
+    normalizer: *id008
+    counter: *id013
+train_logger: !new:speechbrain.utils.train_logger.FileTrainLogger
+  save_file: results/viersen/CRDNN_seq2seq/8201/train_log.txt
+
+error_rate_computer: !name:speechbrain.utils.metric_stats.ErrorRateStats
+
+cer_computer: !name:speechbrain.utils.metric_stats.ErrorRateStats
+  split_tokens: true
+
+# The pretrainer allows a mapping between pretrained files and instances that
+# are declared in the yaml. E.g here, we will download the file lm.ckpt
+# and it will be loaded into "lm" which is pointing to the <lm_model> defined
+# before.
+pretrainer: !new:speechbrain.utils.parameter_transfer.Pretrainer
+  collect_in: results/viersen/CRDNN_seq2seq/8201/save
+  loadables:
+    normalizer: *id008
+    tokenizer: *id014
+    asr_model: *id011
+    lm: *id010
+  paths:
+    normalizer: ../../pre-trained/crdnn_commonvoice//normalizer.ckpt
+    tokenizer: ../../pre-trained/crdnn_commonvoice//1000_unigram.model
+    asr_model: ../../pre-trained/crdnn_commonvoice//asr.ckpt
+    lm: ../../pre-trained/fine-tuned-LM/unigram//lm.ckpt

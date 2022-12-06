@@ -1,0 +1,3 @@
+epoch: 1, time: 00:06, lr_model: 1.00e+00, lr_wav2vec: 1.00e-04 - train loss: 10.50 - valid loss: 3.09, valid CER: 56.00, valid WER: 87.50
+epoch: 2, time: 00:06, lr_model: 1.00e+00, lr_wav2vec: 1.00e-04 - train loss: 10.02 - valid loss: 3.27, valid CER: 56.00, valid WER: 93.75
+Epoch loaded: 1 - test loss: 4.44, test CER: 66.67, test WER: 86.67

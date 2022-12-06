@@ -1,0 +1,117 @@
+# Generated 2022-08-17 from:
+# /netscratch/sagar/thesis/speechbrain/recipes/CommonVoice_de/LM/hparams/RNNLM.yaml
+# yamllint disable
+# ############################################################################
+# Model: RNNLM of E2E ASR
+# Tokens: unigram/char
+# losses: NLL
+# Training: Librispeech 960h transcript + LM corpus
+# Authors:  Ju-Chieh Chou 2020, Jianyuan Zhong 2021
+# ############################################################################
+
+# Seed needs to be set at top of yaml, before objects with parameters are made
+seed: 2995
+__set_seed: !apply:torch.manual_seed [2995]
+output_folder: results/RNN/2995
+save_folder: results/RNN/2995/save
+train_log: results/RNN/2995/train_log.txt
+
+# Data files
+# The data_folder is needed because we train the LM on the training
+# transcriptions of LibriSpeech as well.
+data_folder: ../cv_de_acc/
+
+# path to the lm_corpus
+# if set to null, it will automatically download from the internet
+# in the case when there is no internet access, set this to your local file
+lm_corpus_path: lm_corpus/orignal_data/de_lm_normalized.txt         # 17M sentences
+
+
+# Tokenizer model
+tokenizer_file: ../Tokenizer/results/unigram/1000_unigram.model
+
+# Training parameters
+number_of_epochs: 20
+batch_size: 128
+lr: 0.001
+accu_steps: 1 # Gradient accumulation to simulate large batch training
+ckpt_interval_minutes: 15 # save checkpoint every N min
+
+# Dataloader options
+train_dataloader_opts:
+  batch_size: 128
+  shuffle: true
+
+valid_dataloader_opts:
+  batch_size: 1
+
+test_dataloader_opts:
+  batch_size: 1
+
+# Model parameters
+emb_size: 128
+activation: &id001 !name:torch.nn.LeakyReLU
+dropout: 0.0
+rnn_layers: 2
+rnn_neurons: 2048
+dnn_blocks: 1
+dnn_neurons: 512
+
+# Outputs
+output_neurons: 1000 # index(blank/eos/bos) = 0 | char: 32 | unigram: 1000
+# blank_index: 0
+bos_index: 0
+eos_index: 0
+
+
+# Functions
+model: &id002 !new:speechbrain.lobes.models.RNNLM.RNNLM
+
+  output_neurons: 1000
+  embedding_dim: 128
+  activation: *id001
+  dropout: 0.0
+  rnn_layers: 2
+  rnn_neurons: 2048
+  dnn_blocks: 1
+  dnn_neurons: 512
+
+modules:
+  model: *id002
+checkpointer: !new:speechbrain.utils.checkpoints.Checkpointer
+  checkpoints_dir: results/RNN/2995/save
+  recoverables:
+    model: *id002
+    scheduler: &id003 !new:speechbrain.nnet.schedulers.NewBobScheduler
+      initial_value: 0.001
+      improvement_threshold: 0.0025
+      annealing_factor: 0.8
+      patient: 0
+
+    counter: &id004 !new:speechbrain.utils.epoch_loop.EpochCounter
+
+      limit: 20
+
+log_softmax: !new:speechbrain.nnet.activations.Softmax
+  apply_log: true
+
+optimizer: !name:torch.optim.Adam
+  lr: 0.001
+  betas: (0.9, 0.98)
+  eps: 0.000000001
+
+lr_annealing: *id003
+epoch_counter: *id004
+compute_cost: !name:speechbrain.nnet.losses.nll_loss
+
+train_logger: !new:speechbrain.utils.train_logger.FileTrainLogger
+  save_file: results/RNN/2995/train_log.txt
+
+tokenizer: &id005 !new:sentencepiece.SentencePieceProcessor
+
+pretrainer: !new:speechbrain.utils.parameter_transfer.Pretrainer
+  collect_in: results/RNN/2995/save
+  loadables:
+    tokenizer: *id005
+  paths:
+    tokenizer: ../Tokenizer/results/unigram/1000_unigram.model

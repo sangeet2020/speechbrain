@@ -1,0 +1,1 @@
+Epoch loaded: 0 - test loss: 1.69, test CER: 16.99, test WER: 41.95
