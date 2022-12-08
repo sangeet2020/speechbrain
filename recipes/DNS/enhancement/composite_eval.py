@@ -14,7 +14,7 @@ import os
 import sys
 
 
-def eval_composite(ref_wav, deg_wav):
+def eval_composite(ref_wav, deg_wav, sample_rate):
     ref_wav = ref_wav.reshape(-1)
     deg_wav = deg_wav.reshape(-1)
 
@@ -24,23 +24,23 @@ def eval_composite(ref_wav, deg_wav):
     deg_wav = deg_wav[:len_]
 
     # Compute WSS measure
-    wss_dist_vec = wss(ref_wav, deg_wav, 16000)
+    wss_dist_vec = wss(ref_wav, deg_wav, sample_rate)
     wss_dist_vec = sorted(wss_dist_vec, reverse=False)
     wss_dist = np.mean(wss_dist_vec[: int(round(len(wss_dist_vec) * alpha))])
 
     # Compute LLR measure
-    LLR_dist = llr(ref_wav, deg_wav, 16000)
+    LLR_dist = llr(ref_wav, deg_wav, sample_rate)
     LLR_dist = sorted(LLR_dist, reverse=False)
     LLRs = LLR_dist
     LLR_len = round(len(LLR_dist) * alpha)
     llr_mean = np.mean(LLRs[:LLR_len])
 
     # Compute the SSNR
-    snr_mean, segsnr_mean = SSNR(ref_wav, deg_wav, 16000)
+    snr_mean, segsnr_mean = SSNR(ref_wav, deg_wav, sample_rate)
     segSNR = np.mean(segsnr_mean)
 
     # Compute the PESQ
-    pesq_raw = PESQ(ref_wav, deg_wav)
+    pesq_raw = PESQ(ref_wav, deg_wav, sample_rate)
 
     Csig = 3.093 - 1.029 * llr_mean + 0.603 * pesq_raw - 0.009 * wss_dist
     Csig = trim_mos(Csig)
@@ -49,7 +49,7 @@ def eval_composite(ref_wav, deg_wav):
     Covl = 1.594 + 0.805 * pesq_raw - 0.512 * llr_mean - 0.007 * wss_dist
     Covl = trim_mos(Covl)
 
-    return {"csig": Csig, "cbak": Cbak, "covl": Covl}
+    return {"pesq": pesq_raw, "csig": Csig, "cbak": Cbak, "covl": Covl}
 
 
 # ----------------------------- HELPERS ------------------------------------ #
@@ -96,9 +96,11 @@ def lpcoeff(speech_frame, model_order):
 # -------------------------------------------------------------------------- #
 
 # ---------------------- Speech Quality Metric ----------------------------- #
-def PESQ(ref_wav, deg_wav):
-    rate = 16000
-    return pesq(rate, ref_wav, deg_wav, "wb")
+def PESQ(ref_wav, deg_wav, sample_rate):
+    psq_mode = (
+        "wb" if sample_rate == 16000 else "nb"
+        )
+    return pesq(sample_rate, ref_wav, deg_wav, psq_mode)
 
 
 def SSNR(ref_wav, deg_wav, srate=16000, eps=1e-10):
@@ -435,5 +437,6 @@ if __name__ == "__main__":
             csig += res["csig"]
             cbak += res["cbak"]
             covl += res["covl"]
+            pesq += res["pesq"]
             count += 1
     print(f"CSIG: {csig/count}, CBAK: {cbak/count}, COVL: {covl/count}")
