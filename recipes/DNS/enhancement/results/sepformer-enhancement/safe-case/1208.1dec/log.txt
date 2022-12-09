@@ -1,0 +1,1035 @@
+2022-11-17 04:36:55,813 - speechbrain.core - INFO - Beginning experiment!
+2022-11-17 04:36:55,814 - speechbrain.core - INFO - Experiment folder: results/sepformer-enhancement/1208
+2022-11-17 04:36:58,422 - speechbrain.utils.superpowers - DEBUG - absl-py==1.3.0
+aiohttp==3.8.3
+aiosignal==1.2.0
+appdirs==1.4.4
+async-generator==1.10
+async-timeout==4.0.2
+attrs==22.1.0
+audioread==3.0.0
+black==19.10b0
+cachetools==5.2.0
+certifi==2022.9.24
+cffi==1.15.1
+cfgv==3.3.1
+chardet==5.0.0
+charset-normalizer==2.1.1
+click==8.0.4
+cloudpickle==2.2.0
+colorama==0.4.6
+coloredlogs==15.0.1
+cryptography==38.0.1
+Cython==0.29.32
+datasets==2.5.2
+decorator==5.1.1
+dill==0.3.5.1
+distlib==0.3.6
+docker-pycreds==0.4.0
+entrypoints==0.3
+exceptiongroup==1.0.0rc9
+falcon==3.1.0
+falcon-cors==1.1.7
+filelock==3.8.0
+flake8==3.7.9
+flatbuffers==22.10.26
+frozenlist==1.3.1
+fsspec==2022.8.2
+future==0.18.2
+gdrive==0.1.5
+gitdb==4.0.9
+GitPython==3.1.28
+google-api-core==2.10.1
+google-api-python-client==2.43.0
+google-auth==2.12.0
+google-auth-httplib2==0.1.0
+google-auth-oauthlib==0.4.6
+googleapis-common-protos==1.56.4
+grpcio==1.50.0
+gunicorn==20.1.0
+h11==0.14.0
+httplib2==0.20.4
+huggingface-hub==0.10.0
+humanfriendly==10.0
+HyperPyYAML==1.0.1
+identify==2.5.5
+idna==3.4
+importlib-metadata==5.0.0
+jeepney==0.8.0
+joblib==1.2.0
+kaleido==0.2.1
+librosa==0.9.2
+llvmlite==0.39.1
+Markdown==3.4.1
+MarkupSafe==2.1.1
+mccabe==0.6.1
+mir-eval==0.7
+more-itertools==8.14.0
+mpmath==1.2.1
+multidict==6.0.2
+multiprocess==0.70.13
+nodeenv==1.7.0
+numba==0.56.2
+numpy==1.23.3
+oauthlib==3.2.1
+onnxruntime==1.13.1
+orion==0.2.6
+outcome==1.2.0
+packaging==21.3
+pandas==1.5.0
+pathspec==0.10.1
+pathtools==0.1.2
+pesq==0.0.4
+Pillow==9.2.0
+platformdirs==2.5.2
+plotly==5.10.0
+pluggy==0.13.1
+pooch==1.6.0
+pre-commit==2.20.0
+promise==2.3
+protobuf==3.19.6
+psutil==5.9.2
+py==1.11.0
+pyaml==21.10.1
+pyarrow==6.0.1
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+pycodestyle==2.5.0
+pycparser==2.21
+pydub==0.25.1
+pyflakes==2.1.1
+pymongo==4.2.0
+pyparsing==3.0.9
+pyroomacoustics==0.3.1
+PySocks==1.7.1
+PySoundFile==0.9.0.post1
+pysrt==1.1.2
+pystoi==0.3.3
+pytest==5.4.1
+python-dateutil==2.8.2
+pytz==2022.4
+PyYAML==6.0
+regex==2022.9.13
+requests==2.28.1
+requests-oauthlib==1.3.1
+resampy==0.4.2
+responses==0.18.0
+rsa==4.9
+ruamel.yaml==0.17.21
+ruamel.yaml.clib==0.2.6
+scikit-learn==1.1.2
+scikit-optimize==0.9.0
+scipy==1.9.1
+SecretStorage==3.3.3
+selenium==4.5.0
+sentencepiece==0.1.97
+sentry-sdk==1.10.1
+setproctitle==1.3.2
+shortuuid==1.0.9
+six==1.16.0
+smmap==5.0.0
+sniffio==1.3.0
+sortedcontainers==2.4.0
+soundfile==0.11.0
+sox==1.4.1
+-e /netscratch/sagar/thesis/speechbrain
+sympy==1.11.1
+tabulate==0.9.0
+tenacity==8.1.0
+tensorboard==2.10.1
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.1
+threadpoolctl==3.1.0
+tokenizers==0.12.1
+toml==0.10.2
+torch==1.11.0+cu113
+torch-tb-profiler==0.4.0
+torchaudio==0.11.0+cu113
+torchvision==0.12.0+cu113
+tqdm==4.64.1
+transformers==4.21.1
+trio==0.22.0
+trio-websocket==0.9.2
+typed-ast==1.5.4
+typing_extensions==4.3.0
+uritemplate==4.1.1
+urllib3==1.26.12
+versioneer==0.26
+virtualenv==20.16.5
+wandb==0.13.4
+wcwidth==0.2.5
+Werkzeug==2.2.2
+wsproto==1.2.0
+xxhash==3.0.0
+yamllint==1.23.0
+yarl==1.8.1
+youtube-dl==2021.12.17
+zipp==3.10.0
+
+ERROR: Error [Errno 2] No such file or directory: 'git' while executing command git config --get-regexp 'remote\..*\.url'
+WARNING: cannot determine version of editable source in /netscratch/sagar/thesis/speechbrain (git command not found in path)
+
+2022-11-17 04:37:03,574 - prepare_dns - INFO - Preparing DNS data as csv files in results/sepformer-enhancement/1208/save 
+2022-11-17 04:37:51,707 - prepare_dns - INFO - Writing train csv files
+2022-11-17 04:38:03,624 - prepare_dns - INFO - results/sepformer-enhancement/1208/save/dns_16k_tr.csv successfully created!
+2022-11-17 04:38:03,625 - prepare_dns - INFO - Number of samples: 1186019 
+2022-11-17 04:38:03,625 - prepare_dns - INFO - Total duration: 1317.8 Hours
+2022-11-17 04:38:03,626 - prepare_dns - INFO - Writing valid csv files
+2022-11-17 04:38:03,698 - prepare_dns - INFO - results/sepformer-enhancement/1208/save/dns_16k_cv.csv successfully created!
+2022-11-17 04:38:03,699 - prepare_dns - INFO - Number of samples: 5965 
+2022-11-17 04:38:03,700 - prepare_dns - INFO - Total duration: 6.63 Hours
+2022-11-17 04:38:03,909 - prepare_dns - INFO - Preparing DNS baseline dev data as csv file in results/sepformer-enhancement/1208/save 
+2022-11-17 04:38:03,961 - prepare_dns - INFO - results/sepformer-enhancement/1208/save/dns_baseline_dev_48K.csv successfully created!
+2022-11-17 04:38:28,283 - speechbrain.core - INFO - Info: auto_mix_prec arg from hparam file is used
+2022-11-17 04:38:28,284 - speechbrain.core - INFO - Info: noprogressbar arg from hparam file is used
+2022-11-17 04:38:28,284 - speechbrain.core - INFO - Info: ckpt_interval_minutes arg from hparam file is used
+2022-11-17 04:38:28,432 - speechbrain.core - INFO - 25.6M trainable parameters in Separation
+2022-11-17 04:38:29,708 - speechbrain.utils.checkpoints - INFO - Would load a checkpoint here, but none found yet.
+2022-11-17 04:38:29,709 - speechbrain.utils.epoch_loop - INFO - Going into epoch 1
+2022-11-17 04:38:33,453 - root - INFO - Reducer buckets have been rebuilt in this iteration.
+2022-11-17 05:38:30,790 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+05-38-30+00
+2022-11-17 06:38:31,880 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+06-38-31+00
+2022-11-17 06:38:31,906 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+05-38-30+00
+2022-11-17 07:38:33,094 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+07-38-32+00
+2022-11-17 07:38:33,134 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+06-38-31+00
+2022-11-17 08:38:34,202 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+08-38-33+00
+2022-11-17 08:38:34,258 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+07-38-32+00
+2022-11-17 09:46:16,206 - speechbrain.utils.train_logger - INFO - epoch: 1, time: 04:59:02, lr: 1.50e-04 - train si-snr: -7.23e+00 - valid si-snr: -8.05e+00, valid pesq: 2.24
+2022-11-17 09:46:17,110 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+09-46-16+00
+2022-11-17 09:46:17,111 - speechbrain.utils.epoch_loop - INFO - Going into epoch 2
+2022-11-17 10:46:17,979 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+10-46-17+00
+2022-11-17 10:46:18,132 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+08-38-33+00
+2022-11-17 11:46:19,140 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+11-46-18+00
+2022-11-17 11:46:19,324 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+10-46-17+00
+2022-11-17 12:46:20,440 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+12-46-19+00
+2022-11-17 12:46:20,571 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+11-46-18+00
+2022-11-17 13:46:21,712 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+13-46-20+00
+2022-11-17 13:46:21,891 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+12-46-19+00
+2022-11-17 14:54:17,361 - speechbrain.utils.train_logger - INFO - epoch: 2, time: 04:59:19, lr: 1.50e-04 - train si-snr: -8.53e+00 - valid si-snr: -9.00e+00, valid pesq: 2.33
+2022-11-17 14:54:18,136 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+14-54-17+00
+2022-11-17 14:54:18,948 - speechbrain.utils.epoch_loop - INFO - Going into epoch 3
+2022-11-17 15:54:20,170 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+15-54-19+00
+2022-11-17 15:54:20,471 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+13-46-20+00
+2022-11-17 16:54:21,413 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+16-54-20+00
+2022-11-17 16:54:21,666 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+15-54-19+00
+2022-11-17 17:54:22,788 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+17-54-22+00
+2022-11-17 17:54:23,014 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+16-54-20+00
+2022-11-17 18:54:24,073 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+18-54-23+00
+2022-11-17 18:54:24,327 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+17-54-22+00
+2022-11-17 20:02:52,410 - speechbrain.utils.train_logger - INFO - epoch: 3, time: 04:59:52, lr: 1.50e-04 - train si-snr: -9.08e+00 - valid si-snr: -9.28e+00, valid pesq: 2.37
+2022-11-17 20:02:53,459 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+20-02-52+00
+2022-11-17 20:02:53,509 - speechbrain.utils.epoch_loop - INFO - Going into epoch 4
+2022-11-17 21:02:54,524 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+21-02-53+00
+2022-11-17 21:02:54,862 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+18-54-23+00
+2022-11-17 22:02:55,751 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+22-02-55+00
+2022-11-17 22:02:56,072 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+21-02-53+00
+2022-11-17 23:02:56,854 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+23-02-56+00
+2022-11-17 23:02:57,245 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+22-02-55+00
+2022-11-18 00:02:57,973 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+00-02-57+00
+2022-11-18 00:02:58,345 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-17+23-02-56+00
+2022-11-18 01:11:18,845 - speechbrain.utils.train_logger - INFO - epoch: 4, time: 04:59:43, lr: 1.50e-04 - train si-snr: -9.25e+00 - valid si-snr: -9.46e+00, valid pesq: 2.38
+2022-11-18 01:11:19,598 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+01-11-18+00
+2022-11-18 01:11:19,600 - speechbrain.utils.epoch_loop - INFO - Going into epoch 5
+2022-11-18 02:11:20,483 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+02-11-19+00
+2022-11-18 02:11:21,004 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+00-02-57+00
+2022-11-18 03:11:21,781 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+03-11-21+00
+2022-11-18 03:11:22,288 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+02-11-19+00
+2022-11-18 04:11:23,165 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+04-11-22+00
+2022-11-18 04:11:23,663 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+03-11-21+00
+2022-11-18 05:11:24,874 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+05-11-24+00
+2022-11-18 05:11:25,437 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+04-11-22+00
+2022-11-18 06:19:22,902 - speechbrain.utils.train_logger - INFO - epoch: 5, time: 04:59:23, lr: 1.50e-04 - train si-snr: -9.37e+00 - valid si-snr: -9.59e+00, valid pesq: 2.44
+2022-11-18 06:19:23,626 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+06-19-22+00
+2022-11-18 06:19:25,161 - speechbrain.utils.epoch_loop - INFO - Going into epoch 6
+2022-11-18 07:19:26,429 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+07-19-25+00
+2022-11-18 07:19:27,205 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+05-11-24+00
+2022-11-18 08:19:27,920 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+08-19-27+00
+2022-11-18 08:19:28,702 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+07-19-25+00
+2022-11-18 09:19:29,933 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+09-19-29+00
+2022-11-18 09:19:30,724 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+08-19-27+00
+2022-11-18 10:19:31,497 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+10-19-30+00
+2022-11-18 10:19:32,246 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+09-19-29+00
+2022-11-18 11:27:48,543 - speechbrain.utils.train_logger - INFO - epoch: 6, time: 04:59:43, lr: 1.50e-04 - train si-snr: -9.61e+00 - valid si-snr: -9.73e+00, valid pesq: 2.46
+2022-11-18 11:27:49,355 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+11-27-48+00
+2022-11-18 11:27:50,199 - speechbrain.utils.epoch_loop - INFO - Going into epoch 7
+2022-11-18 12:27:51,078 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+12-27-50+00
+2022-11-18 12:27:52,077 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+10-19-30+00
+2022-11-18 13:27:53,193 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+13-27-52+00
+2022-11-18 13:27:54,086 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+12-27-50+00
+2022-11-18 14:27:55,138 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+14-27-54+00
+2022-11-18 14:27:56,223 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+13-27-52+00
+2022-11-18 15:27:57,272 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+15-27-56+00
+2022-11-18 15:27:58,438 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+14-27-54+00
+2022-11-18 16:36:30,187 - speechbrain.utils.train_logger - INFO - epoch: 7, time: 04:59:53, lr: 1.50e-04 - train si-snr: -9.67e+00 - valid si-snr: -9.78e+00, valid pesq: 2.47
+2022-11-18 16:36:30,966 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+16-36-30+00
+2022-11-18 16:36:30,967 - speechbrain.utils.epoch_loop - INFO - Going into epoch 8
+2022-11-18 17:36:31,757 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+17-36-31+00
+2022-11-18 17:36:32,973 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+15-27-56+00
+2022-11-18 18:36:33,923 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+18-36-33+00
+2022-11-18 18:36:35,286 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+17-36-31+00
+2022-11-18 19:36:36,272 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+19-36-35+00
+2022-11-18 19:36:37,482 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+18-36-33+00
+2022-11-18 20:36:38,574 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+20-36-37+00
+2022-11-18 20:36:39,864 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+19-36-35+00
+2022-11-18 21:36:41,111 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+21-36-40+00
+2022-11-18 21:36:42,716 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+20-36-37+00
+2022-11-18 21:45:41,491 - speechbrain.utils.train_logger - INFO - epoch: 8, time: 05:00:24, lr: 1.50e-04 - train si-snr: -9.70e+00 - valid si-snr: -9.89e+00, valid pesq: 2.44
+2022-11-18 21:45:42,277 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+21-45-41+00
+2022-11-18 21:45:42,278 - speechbrain.utils.epoch_loop - INFO - Going into epoch 9
+2022-11-18 22:45:43,070 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+22-45-42+00
+2022-11-18 22:45:44,837 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+21-36-40+00
+2022-11-18 23:45:45,682 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+23-45-44+00
+2022-11-18 23:45:47,353 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+22-45-42+00
+2022-11-19 00:45:48,566 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+00-45-47+00
+2022-11-19 00:45:50,303 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-18+23-45-44+00
+2022-11-19 01:45:51,039 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+01-45-50+00
+2022-11-19 01:45:53,108 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+00-45-47+00
+2022-11-19 02:45:54,220 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+02-45-53+00
+2022-11-19 02:45:56,118 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+01-45-50+00
+2022-11-19 02:54:43,340 - speechbrain.utils.train_logger - INFO - epoch: 9, time: 05:00:17, lr: 1.50e-04 - train si-snr: -9.69e+00 - valid si-snr: -9.91e+00, valid pesq: 2.47
+2022-11-19 02:54:44,250 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+02-54-43+00
+2022-11-19 02:54:44,764 - speechbrain.utils.epoch_loop - INFO - Going into epoch 10
+2022-11-19 03:54:45,573 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+03-54-44+00
+2022-11-19 03:54:47,942 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+02-45-53+00
+2022-11-19 04:54:48,947 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+04-54-48+00
+2022-11-19 04:54:51,231 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+03-54-44+00
+2022-11-19 05:54:52,389 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+05-54-51+00
+2022-11-19 05:54:54,983 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+04-54-48+00
+2022-11-19 06:54:55,867 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+06-54-55+00
+2022-11-19 06:54:58,138 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+05-54-51+00
+2022-11-19 07:54:59,294 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+07-54-58+00
+2022-11-19 07:55:01,725 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+06-54-55+00
+2022-11-19 08:04:11,472 - speechbrain.utils.train_logger - INFO - epoch: 10, time: 05:00:41, lr: 1.50e-04 - train si-snr: -9.86e+00 - valid si-snr: -1.00e+01, valid pesq: 2.45
+2022-11-19 08:04:12,332 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+08-04-11+00
+2022-11-19 08:04:13,944 - speechbrain.utils.epoch_loop - INFO - Going into epoch 11
+2022-11-19 09:04:15,035 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+09-04-14+00
+2022-11-19 09:04:17,906 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+07-54-58+00
+2022-11-19 10:04:18,785 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+10-04-17+00
+2022-11-19 10:04:21,533 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+09-04-14+00
+2022-11-19 11:04:22,513 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+11-04-21+00
+2022-11-19 11:04:25,314 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+10-04-17+00
+2022-11-19 12:04:26,561 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+12-04-25+00
+2022-11-19 12:04:29,401 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+11-04-21+00
+2022-11-19 13:04:30,485 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+13-04-29+00
+2022-11-19 13:04:33,562 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+12-04-25+00
+2022-11-19 13:13:37,078 - speechbrain.utils.train_logger - INFO - epoch: 11, time: 05:00:37, lr: 1.50e-04 - train si-snr: -9.98e+00 - valid si-snr: -1.01e+01, valid pesq: 2.46
+2022-11-19 13:13:37,963 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+13-13-37+00
+2022-11-19 13:13:38,512 - speechbrain.utils.epoch_loop - INFO - Going into epoch 12
+2022-11-19 14:13:39,378 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+14-13-38+00
+2022-11-19 14:13:42,291 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+13-04-29+00
+2022-11-19 15:13:43,445 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+15-13-42+00
+2022-11-19 15:13:46,740 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+14-13-38+00
+2022-11-19 16:13:47,860 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+16-13-46+00
+2022-11-19 16:13:51,116 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+15-13-42+00
+2022-11-19 17:13:52,188 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+17-13-51+00
+2022-11-19 17:13:55,438 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+16-13-46+00
+2022-11-19 18:13:56,374 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+18-13-55+00
+2022-11-19 18:13:59,885 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+17-13-51+00
+2022-11-19 18:22:58,505 - speechbrain.utils.train_logger - INFO - epoch: 12, time: 05:00:34, lr: 1.50e-04 - train si-snr: -1.01e+01 - valid si-snr: -1.02e+01, valid pesq: 2.53
+2022-11-19 18:22:59,339 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+18-22-58+00
+2022-11-19 18:23:01,218 - speechbrain.utils.epoch_loop - INFO - Going into epoch 13
+2022-11-19 19:23:02,074 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+19-23-01+00
+2022-11-19 19:23:05,239 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+18-13-55+00
+2022-11-19 20:23:06,017 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+20-23-05+00
+2022-11-19 20:23:09,251 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+19-23-01+00
+2022-11-19 21:23:10,345 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+21-23-09+00
+2022-11-19 21:23:14,169 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+20-23-05+00
+2022-11-19 22:23:15,132 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+22-23-14+00
+2022-11-19 22:23:18,395 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+21-23-09+00
+2022-11-19 23:23:19,388 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+23-23-18+00
+2022-11-19 23:23:23,196 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+22-23-14+00
+2022-11-19 23:33:07,533 - speechbrain.utils.train_logger - INFO - epoch: 13, time: 05:01:20, lr: 1.50e-04 - train si-snr: -1.00e+01 - valid si-snr: -1.02e+01, valid pesq: 2.48
+2022-11-19 23:33:08,335 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+23-33-07+00
+2022-11-19 23:33:08,336 - speechbrain.utils.epoch_loop - INFO - Going into epoch 14
+2022-11-20 00:33:09,523 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+00-33-08+00
+2022-11-20 00:33:13,413 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-19+23-23-18+00
+2022-11-20 01:33:14,480 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+01-33-13+00
+2022-11-20 01:33:18,655 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+00-33-08+00
+2022-11-20 02:33:19,681 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+02-33-18+00
+2022-11-20 02:33:24,455 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+01-33-13+00
+2022-11-20 03:33:25,352 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+03-33-24+00
+2022-11-20 03:33:29,577 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+02-33-18+00
+2022-11-20 04:33:30,703 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+04-33-29+00
+2022-11-20 04:33:34,670 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+03-33-24+00
+2022-11-20 04:43:37,117 - speechbrain.utils.train_logger - INFO - epoch: 14, time: 05:01:43, lr: 1.50e-04 - train si-snr: -1.01e+01 - valid si-snr: -1.02e+01, valid pesq: 2.48
+2022-11-20 04:43:37,926 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+04-43-37+00
+2022-11-20 04:43:37,927 - speechbrain.utils.epoch_loop - INFO - Going into epoch 15
+2022-11-20 05:43:38,880 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+05-43-38+00
+2022-11-20 05:43:43,789 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+04-33-29+00
+2022-11-20 06:43:44,524 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+06-43-43+00
+2022-11-20 06:43:49,603 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+05-43-38+00
+2022-11-20 07:43:50,393 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+07-43-49+00
+2022-11-20 07:43:55,472 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+06-43-43+00
+2022-11-20 08:43:56,619 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+08-43-55+00
+2022-11-20 08:44:01,744 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+07-43-49+00
+2022-11-20 09:44:02,719 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+09-44-01+00
+2022-11-20 09:44:08,263 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+08-43-55+00
+2022-11-20 09:53:31,048 - speechbrain.utils.train_logger - INFO - epoch: 15, time: 05:01:06, lr: 1.50e-04 - train si-snr: -1.02e+01 - valid si-snr: -1.03e+01, valid pesq: 2.54
+2022-11-20 09:53:31,982 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+09-53-31+00
+2022-11-20 09:53:31,983 - speechbrain.utils.epoch_loop - INFO - Going into epoch 16
+2022-11-20 10:53:32,883 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+10-53-32+00
+2022-11-20 10:53:38,686 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+09-44-01+00
+2022-11-20 11:53:40,163 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+11-53-39+00
+2022-11-20 11:53:49,113 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+10-53-32+00
+2022-11-20 12:53:50,072 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+12-53-49+00
+2022-11-20 12:53:56,344 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+11-53-39+00
+2022-11-20 13:53:57,362 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+13-53-56+00
+2022-11-20 13:54:03,415 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+12-53-49+00
+2022-11-20 14:54:04,451 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+14-54-03+00
+2022-11-20 14:54:10,067 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+13-53-56+00
+2022-11-20 15:03:49,250 - speechbrain.utils.train_logger - INFO - epoch: 16, time: 05:01:31, lr: 1.50e-04 - train si-snr: -9.65e+00 - valid si-snr: -9.72e+00, valid pesq: 2.45
+2022-11-20 15:03:50,055 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+15-03-49+00
+2022-11-20 15:03:50,594 - speechbrain.utils.epoch_loop - INFO - Going into epoch 17
+2022-11-20 16:03:51,799 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+16-03-50+00
+2022-11-20 16:03:58,185 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+14-54-03+00
+2022-11-20 17:03:59,387 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+17-03-58+00
+2022-11-20 17:04:06,062 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+16-03-50+00
+2022-11-20 18:04:07,282 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+18-04-06+00
+2022-11-20 18:04:13,791 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+17-03-58+00
+2022-11-20 19:04:14,855 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+19-04-14+00
+2022-11-20 19:04:21,572 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+18-04-06+00
+2022-11-20 20:04:22,406 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+20-04-21+00
+2022-11-20 20:04:29,244 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+19-04-14+00
+2022-11-20 20:14:07,545 - speechbrain.utils.train_logger - INFO - epoch: 17, time: 05:01:31, lr: 1.50e-04 - train si-snr: -9.76e+00 - valid si-snr: -9.91e+00, valid pesq: 2.43
+2022-11-20 20:14:08,459 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+20-14-07+00
+2022-11-20 20:14:09,548 - speechbrain.utils.epoch_loop - INFO - Going into epoch 18
+2022-11-20 21:14:10,807 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+21-14-09+00
+2022-11-20 21:14:18,821 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+20-04-21+00
+2022-11-20 22:14:19,663 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+22-14-18+00
+2022-11-20 22:14:26,798 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+21-14-09+00
+2022-11-20 23:14:27,949 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+23-14-27+00
+2022-11-20 23:14:35,525 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+22-14-18+00
+2022-11-21 00:14:36,650 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+00-14-35+00
+2022-11-21 00:14:44,360 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-20+23-14-27+00
+2022-11-21 01:14:45,607 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+01-14-44+00
+2022-11-21 01:14:53,641 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+00-14-35+00
+2022-11-21 01:24:23,758 - speechbrain.utils.train_logger - INFO - epoch: 18, time: 05:01:27, lr: 1.50e-04 - train si-snr: -9.91e+00 - valid si-snr: -1.01e+01, valid pesq: 2.46
+2022-11-21 01:24:24,592 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+01-24-23+00
+2022-11-21 01:24:24,594 - speechbrain.utils.epoch_loop - INFO - Going into epoch 19
+2022-11-21 02:24:25,375 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+02-24-24+00
+2022-11-21 02:24:33,401 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+01-14-44+00
+2022-11-21 03:24:34,330 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+03-24-33+00
+2022-11-21 03:24:42,463 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+02-24-24+00
+2022-11-21 04:24:43,284 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+04-24-42+00
+2022-11-21 04:24:51,531 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+03-24-33+00
+2022-11-21 05:24:52,388 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+05-24-51+00
+2022-11-21 05:25:00,790 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+04-24-42+00
+2022-11-21 06:25:01,727 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+06-25-00+00
+2022-11-21 06:25:10,091 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+05-24-51+00
+2022-11-21 06:34:17,972 - speechbrain.utils.train_logger - INFO - epoch: 19, time: 05:01:10, lr: 1.50e-04 - train si-snr: -9.88e+00 - valid si-snr: -1.01e+01, valid pesq: 2.48
+2022-11-21 06:34:18,709 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+06-34-17+00
+2022-11-21 06:34:20,652 - speechbrain.utils.epoch_loop - INFO - Going into epoch 20
+2022-11-21 07:34:21,575 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+07-34-20+00
+2022-11-21 07:34:30,121 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+06-25-00+00
+2022-11-21 08:34:31,083 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+08-34-30+00
+2022-11-21 08:34:39,921 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+07-34-20+00
+2022-11-21 09:34:40,719 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+09-34-40+00
+2022-11-21 09:34:49,098 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+08-34-30+00
+2022-11-21 10:34:50,303 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+10-34-49+00
+2022-11-21 10:34:59,362 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+09-34-40+00
+2022-11-21 11:35:00,197 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+11-34-59+00
+2022-11-21 11:35:09,081 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+10-34-49+00
+2022-11-21 11:44:46,019 - speechbrain.utils.train_logger - INFO - epoch: 20, time: 05:01:40, lr: 1.50e-04 - train si-snr: -1.01e+01 - valid si-snr: -1.02e+01, valid pesq: 2.48
+2022-11-21 11:44:46,740 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+11-44-46+00
+2022-11-21 11:44:46,741 - speechbrain.utils.epoch_loop - INFO - Going into epoch 21
+2022-11-21 12:44:47,721 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+12-44-46+00
+2022-11-21 12:44:57,315 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+11-34-59+00
+2022-11-21 13:44:58,414 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+13-44-57+00
+2022-11-21 13:45:08,039 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+12-44-46+00
+2022-11-21 14:45:09,023 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+14-45-08+00
+2022-11-21 14:45:18,836 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+13-44-57+00
+2022-11-21 15:45:19,934 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+15-45-19+00
+2022-11-21 15:45:29,607 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+14-45-08+00
+2022-11-21 16:45:30,768 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+16-45-30+00
+2022-11-21 16:45:40,568 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+15-45-19+00
+2022-11-21 16:55:01,036 - speechbrain.utils.train_logger - INFO - epoch: 21, time: 05:01:31, lr: 1.50e-04 - train si-snr: -1.01e+01 - valid si-snr: -1.02e+01, valid pesq: 2.52
+2022-11-21 16:55:01,992 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+16-55-01+00
+2022-11-21 16:55:04,072 - speechbrain.utils.epoch_loop - INFO - Going into epoch 22
+2022-11-21 17:55:05,081 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+17-55-04+00
+2022-11-21 17:55:14,986 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+16-45-30+00
+2022-11-21 18:55:16,075 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+18-55-15+00
+2022-11-21 18:55:25,988 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+17-55-04+00
+2022-11-21 19:55:26,803 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+19-55-26+00
+2022-11-21 19:55:37,160 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+18-55-15+00
+2022-11-21 20:55:38,168 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+20-55-37+00
+2022-11-21 20:55:48,285 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+19-55-26+00
+2022-11-21 21:55:49,034 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+21-55-48+00
+2022-11-21 21:55:59,933 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+20-55-37+00
+2022-11-21 22:05:40,362 - speechbrain.utils.train_logger - INFO - epoch: 22, time: 05:01:51, lr: 1.50e-04 - train si-snr: -1.02e+01 - valid si-snr: -1.03e+01, valid pesq: 2.53
+2022-11-21 22:05:41,051 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+22-05-40+00
+2022-11-21 22:05:41,131 - speechbrain.utils.epoch_loop - INFO - Going into epoch 23
+2022-11-21 23:05:42,073 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+23-05-41+00
+2022-11-21 23:05:52,875 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+21-55-48+00
+2022-11-22 00:05:53,681 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+00-05-53+00
+2022-11-22 00:06:05,357 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-21+23-05-41+00
+2022-11-22 01:06:06,177 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+01-06-05+00
+2022-11-22 01:06:18,014 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+00-05-53+00
+2022-11-22 02:06:18,734 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+02-06-18+00
+2022-11-22 02:06:30,538 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+01-06-05+00
+2022-11-22 03:06:31,360 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+03-06-30+00
+2022-11-22 03:06:42,668 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+02-06-18+00
+2022-11-22 03:16:13,775 - speechbrain.utils.train_logger - INFO - epoch: 23, time: 05:01:48, lr: 1.50e-04 - train si-snr: -1.02e+01 - valid si-snr: -1.03e+01, valid pesq: 2.49
+2022-11-22 03:16:14,479 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+03-16-13+00
+2022-11-22 03:16:14,481 - speechbrain.utils.epoch_loop - INFO - Going into epoch 24
+2022-11-22 04:16:15,532 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+04-16-14+00
+2022-11-22 04:16:28,324 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+03-06-30+00
+2022-11-22 05:16:29,047 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+05-16-28+00
+2022-11-22 05:16:42,048 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+04-16-14+00
+2022-11-22 06:16:42,891 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+06-16-42+00
+2022-11-22 06:16:55,207 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+05-16-28+00
+2022-11-22 07:16:56,292 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+07-16-55+00
+2022-11-22 07:17:09,550 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+06-16-42+00
+2022-11-22 08:17:10,282 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+08-17-09+00
+2022-11-22 08:17:23,831 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+07-16-55+00
+2022-11-22 08:26:48,646 - speechbrain.utils.train_logger - INFO - epoch: 24, time: 05:01:48, lr: 1.50e-04 - train si-snr: -1.02e+01 - valid si-snr: -1.04e+01, valid pesq: 2.52
+2022-11-22 08:26:49,355 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+08-26-48+00
+2022-11-22 08:26:49,357 - speechbrain.utils.epoch_loop - INFO - Going into epoch 25
+2022-11-22 09:26:50,385 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+09-26-49+00
+2022-11-22 09:27:03,669 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+08-17-09+00
+2022-11-22 10:27:04,602 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+10-27-03+00
+2022-11-22 10:27:17,322 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+09-26-49+00
+2022-11-22 11:27:18,203 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+11-27-17+00
+2022-11-22 11:27:31,155 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+10-27-03+00
+2022-11-22 12:27:32,012 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+12-27-31+00
+2022-11-22 12:27:46,083 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+11-27-17+00
+2022-11-22 13:27:47,168 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+13-27-46+00
+2022-11-22 13:28:02,026 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+12-27-31+00
+2022-11-22 13:37:39,709 - speechbrain.utils.train_logger - INFO - epoch: 25, time: 05:02:06, lr: 1.50e-04 - train si-snr: -1.02e+01 - valid si-snr: -1.04e+01, valid pesq: 2.54
+2022-11-22 13:37:40,484 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+13-37-39+00
+2022-11-22 13:37:41,973 - speechbrain.utils.epoch_loop - INFO - Going into epoch 26
+2022-11-22 14:37:43,294 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+14-37-42+00
+2022-11-22 14:37:57,717 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+13-27-46+00
+2022-11-22 15:37:58,593 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+15-37-57+00
+2022-11-22 15:38:12,991 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+14-37-42+00
+2022-11-22 16:38:14,198 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+16-38-13+00
+2022-11-22 16:38:29,222 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+15-37-57+00
+2022-11-22 17:38:30,403 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+17-38-29+00
+2022-11-22 17:38:44,912 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+16-38-13+00
+2022-11-22 18:38:45,828 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+18-38-45+00
+2022-11-22 18:38:59,371 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+17-38-29+00
+2022-11-22 18:48:34,402 - speechbrain.utils.train_logger - INFO - epoch: 26, time: 05:02:06, lr: 1.50e-04 - train si-snr: -1.03e+01 - valid si-snr: -1.04e+01, valid pesq: 2.56
+2022-11-22 18:48:35,151 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+18-48-34+00
+2022-11-22 18:48:35,195 - speechbrain.utils.epoch_loop - INFO - Going into epoch 27
+2022-11-22 19:48:35,979 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+19-48-35+00
+2022-11-22 19:48:49,926 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+18-38-45+00
+2022-11-22 20:48:50,710 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+20-48-50+00
+2022-11-22 20:49:06,866 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+19-48-35+00
+2022-11-22 21:49:07,800 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+21-49-07+00
+2022-11-22 21:49:23,650 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+20-48-50+00
+2022-11-22 22:49:24,656 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+22-49-23+00
+2022-11-22 22:49:40,872 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+21-49-07+00
+2022-11-22 23:49:41,845 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+23-49-41+00
+2022-11-22 23:49:59,030 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+22-49-23+00
+2022-11-22 23:59:43,910 - speechbrain.utils.train_logger - INFO - epoch: 27, time: 05:02:19, lr: 1.50e-04 - train si-snr: -1.03e+01 - valid si-snr: -1.05e+01, valid pesq: 2.51
+2022-11-22 23:59:44,672 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+23-59-43+00
+2022-11-22 23:59:44,674 - speechbrain.utils.epoch_loop - INFO - Going into epoch 28
+2022-11-23 00:59:45,670 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+00-59-44+00
+2022-11-23 01:00:05,994 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-22+23-49-41+00
+2022-11-23 02:00:06,846 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+02-00-06+00
+2022-11-23 02:00:24,045 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+00-59-44+00
+2022-11-23 03:00:25,212 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+03-00-24+00
+2022-11-23 03:00:43,828 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+02-00-06+00
+2022-11-23 04:00:44,601 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+04-00-43+00
+2022-11-23 04:01:01,400 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+03-00-24+00
+2022-11-23 05:01:02,241 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+05-01-01+00
+2022-11-23 05:01:19,574 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+04-00-43+00
+2022-11-23 05:10:37,243 - speechbrain.utils.train_logger - INFO - epoch: 28, time: 05:02:11, lr: 1.50e-04 - train si-snr: -1.03e+01 - valid si-snr: -1.05e+01, valid pesq: 2.54
+2022-11-23 05:10:37,974 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+05-10-37+00
+2022-11-23 05:10:41,561 - speechbrain.utils.epoch_loop - INFO - Going into epoch 29
+2022-11-23 06:10:42,375 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+06-10-41+00
+2022-11-23 06:11:00,872 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+05-01-01+00
+2022-11-23 07:11:01,989 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+07-11-01+00
+2022-11-23 07:11:19,934 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+06-10-41+00
+2022-11-23 08:11:20,685 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+08-11-19+00
+2022-11-23 08:11:40,376 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+07-11-01+00
+2022-11-23 09:11:41,192 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+09-11-40+00
+2022-11-23 09:12:01,500 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+08-11-19+00
+2022-11-23 10:12:02,360 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+10-12-01+00
+2022-11-23 10:12:21,055 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+09-11-40+00
+2022-11-23 10:21:44,898 - speechbrain.utils.train_logger - INFO - epoch: 29, time: 05:02:19, lr: 1.50e-04 - train si-snr: -1.03e+01 - valid si-snr: -1.04e+01, valid pesq: 2.49
+2022-11-23 10:21:45,655 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+10-21-44+00
+2022-11-23 10:21:48,088 - speechbrain.utils.epoch_loop - INFO - Going into epoch 30
+2022-11-23 11:21:49,304 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+11-21-48+00
+2022-11-23 11:22:08,492 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+10-12-01+00
+2022-11-23 12:22:09,711 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+12-22-08+00
+2022-11-23 12:22:28,484 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+11-21-48+00
+2022-11-23 13:22:29,257 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+13-22-28+00
+2022-11-23 13:22:50,265 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+12-22-08+00
+2022-11-23 14:22:51,064 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+14-22-50+00
+2022-11-23 14:23:09,485 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+13-22-28+00
+2022-11-23 15:23:10,620 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+15-23-09+00
+2022-11-23 15:23:29,573 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+14-22-50+00
+2022-11-23 15:33:13,263 - speechbrain.utils.train_logger - INFO - epoch: 30, time: 05:02:41, lr: 1.50e-04 - train si-snr: -1.03e+01 - valid si-snr: -1.05e+01, valid pesq: 2.51
+2022-11-23 15:33:13,978 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+15-33-13+00
+2022-11-23 15:33:15,638 - speechbrain.utils.epoch_loop - INFO - Going into epoch 31
+2022-11-23 16:33:16,863 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+16-33-16+00
+2022-11-23 16:33:38,222 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+15-23-09+00
+2022-11-23 17:33:38,971 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+17-33-38+00
+2022-11-23 17:34:00,645 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+16-33-16+00
+2022-11-23 18:34:01,512 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+18-34-00+00
+2022-11-23 18:34:20,818 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+17-33-38+00
+2022-11-23 19:34:21,941 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+19-34-21+00
+2022-11-23 19:34:40,470 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+18-34-00+00
+2022-11-23 20:34:41,277 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+20-34-40+00
+2022-11-23 20:35:00,075 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+19-34-21+00
+2022-11-23 20:44:53,117 - speechbrain.utils.train_logger - INFO - epoch: 31, time: 05:02:51, lr: 1.50e-04 - train si-snr: -1.04e+01 - valid si-snr: -1.05e+01, valid pesq: 2.54
+2022-11-23 20:44:53,905 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+20-44-53+00
+2022-11-23 20:44:53,907 - speechbrain.utils.epoch_loop - INFO - Going into epoch 32
+2022-11-23 21:44:54,822 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+21-44-54+00
+2022-11-23 21:45:14,927 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+20-34-40+00
+2022-11-23 22:45:15,843 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+22-45-15+00
+2022-11-23 22:45:36,631 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+21-44-54+00
+2022-11-23 23:45:37,490 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+23-45-36+00
+2022-11-23 23:45:57,660 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+22-45-15+00
+2022-11-24 00:45:58,409 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+00-45-57+00
+2022-11-24 00:46:18,539 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-23+23-45-36+00
+2022-11-24 01:46:19,341 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+01-46-18+00
+2022-11-24 01:46:39,934 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+00-45-57+00
+2022-11-24 01:56:15,550 - speechbrain.utils.train_logger - INFO - epoch: 32, time: 05:02:37, lr: 1.50e-04 - train si-snr: -5.61e+00 - valid si-snr: -1.03e+01, valid pesq: 2.51
+2022-11-24 01:56:16,710 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+01-56-15+00
+2022-11-24 01:56:18,348 - speechbrain.utils.epoch_loop - INFO - Going into epoch 33
+2022-11-24 02:56:19,479 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+02-56-18+00
+2022-11-24 02:56:40,970 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+01-46-18+00
+2022-11-24 03:56:41,837 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+03-56-41+00
+2022-11-24 03:57:02,611 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+02-56-18+00
+2022-11-24 04:57:03,578 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+04-57-02+00
+2022-11-24 04:57:26,473 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+03-56-41+00
+2022-11-24 05:57:27,268 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+05-57-26+00
+2022-11-24 05:57:49,667 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+04-57-02+00
+2022-11-24 06:57:50,705 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+06-57-49+00
+2022-11-24 06:58:13,630 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+05-57-26+00
+2022-11-24 07:07:49,907 - speechbrain.utils.train_logger - INFO - epoch: 33, time: 05:02:47, lr: 1.50e-04 - train si-snr: -1.04e+01 - valid si-snr: -1.06e+01, valid pesq: 2.56
+2022-11-24 07:07:50,646 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+07-07-49+00
+2022-11-24 07:07:51,362 - speechbrain.utils.epoch_loop - INFO - Going into epoch 34
+2022-11-24 08:07:52,372 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+08-07-51+00
+2022-11-24 08:08:14,652 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+06-57-49+00
+2022-11-24 09:08:15,573 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+09-08-14+00
+2022-11-24 09:08:40,059 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+08-07-51+00
+2022-11-24 10:08:41,181 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+10-08-40+00
+2022-11-24 10:09:04,943 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+09-08-14+00
+2022-11-24 11:09:05,718 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+11-09-05+00
+2022-11-24 11:09:27,310 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+10-08-40+00
+2022-11-24 12:09:28,647 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+12-09-27+00
+2022-11-24 12:09:50,603 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+11-09-05+00
+2022-11-24 12:19:40,402 - speechbrain.utils.train_logger - INFO - epoch: 34, time: 05:03:04, lr: 1.50e-04 - train si-snr: -1.04e+01 - valid si-snr: -1.06e+01, valid pesq: 2.53
+2022-11-24 12:19:41,132 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+12-19-40+00
+2022-11-24 12:19:41,564 - speechbrain.utils.epoch_loop - INFO - Going into epoch 35
+2022-11-24 13:19:42,707 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+13-19-42+00
+2022-11-24 13:20:08,725 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+12-09-27+00
+2022-11-24 14:20:09,989 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+14-20-09+00
+2022-11-24 14:20:34,124 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+13-19-42+00
+2022-11-24 15:20:35,316 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+15-20-34+00
+2022-11-24 15:21:02,088 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+14-20-09+00
+2022-11-24 16:21:03,057 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+16-21-02+00
+2022-11-24 16:21:39,821 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+15-20-34+00
+2022-11-24 17:21:40,727 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+17-21-39+00
+2022-11-24 17:22:06,821 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+16-21-02+00
+2022-11-24 17:32:04,434 - speechbrain.utils.train_logger - INFO - epoch: 35, time: 05:03:37, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.06e+01, valid pesq: 2.59
+2022-11-24 17:32:05,345 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+17-32-04+00
+2022-11-24 17:32:05,346 - speechbrain.utils.epoch_loop - INFO - Going into epoch 36
+2022-11-24 18:32:06,153 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+18-32-05+00
+2022-11-24 18:32:33,228 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+17-21-39+00
+2022-11-24 19:32:34,536 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+19-32-33+00
+2022-11-24 19:33:02,106 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+18-32-05+00
+2022-11-24 20:33:02,992 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+20-33-02+00
+2022-11-24 20:33:31,168 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+19-32-33+00
+2022-11-24 21:33:32,359 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+21-33-31+00
+2022-11-24 21:34:00,784 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+20-33-02+00
+2022-11-24 22:34:01,795 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+22-34-01+00
+2022-11-24 22:34:29,227 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+21-33-31+00
+2022-11-24 22:44:25,278 - speechbrain.utils.train_logger - INFO - epoch: 36, time: 05:03:35, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.05e+01, valid pesq: 2.53
+2022-11-24 22:44:26,009 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+22-44-25+00
+2022-11-24 22:44:26,436 - speechbrain.utils.epoch_loop - INFO - Going into epoch 37
+2022-11-24 23:44:27,458 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+23-44-26+00
+2022-11-24 23:44:54,066 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+22-34-01+00
+2022-11-25 00:44:54,847 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+00-44-54+00
+2022-11-25 00:45:22,779 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-24+23-44-26+00
+2022-11-25 01:45:23,844 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+01-45-23+00
+2022-11-25 01:45:51,252 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+00-44-54+00
+2022-11-25 02:45:52,197 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+02-45-51+00
+2022-11-25 02:46:20,907 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+01-45-23+00
+2022-11-25 03:46:21,723 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+03-46-21+00
+2022-11-25 03:46:49,416 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+02-45-51+00
+2022-11-25 03:56:24,775 - speechbrain.utils.train_logger - INFO - epoch: 37, time: 05:03:13, lr: 1.50e-04 - train si-snr: -8.75e+00 - valid si-snr: -1.05e+01, valid pesq: 2.53
+2022-11-25 03:56:25,479 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+03-56-24+00
+2022-11-25 03:56:26,095 - speechbrain.utils.epoch_loop - INFO - Going into epoch 38
+2022-11-25 04:56:27,025 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+04-56-26+00
+2022-11-25 04:56:57,409 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+03-46-21+00
+2022-11-25 05:56:58,213 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+05-56-57+00
+2022-11-25 05:57:28,934 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+04-56-26+00
+2022-11-25 06:57:29,890 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+06-57-29+00
+2022-11-25 06:57:59,938 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+05-56-57+00
+2022-11-25 07:58:01,147 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+07-58-00+00
+2022-11-25 07:58:30,661 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+06-57-29+00
+2022-11-25 08:58:31,602 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+08-58-30+00
+2022-11-25 08:59:01,272 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+07-58-00+00
+2022-11-25 09:08:36,945 - speechbrain.utils.train_logger - INFO - epoch: 38, time: 05:03:24, lr: 1.50e-04 - train si-snr: -1.04e+01 - valid si-snr: -1.06e+01, valid pesq: 2.56
+2022-11-25 09:08:37,675 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+09-08-36+00
+2022-11-25 09:08:37,677 - speechbrain.utils.epoch_loop - INFO - Going into epoch 39
+2022-11-25 10:08:38,662 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+10-08-37+00
+2022-11-25 10:09:10,013 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+08-58-30+00
+2022-11-25 11:09:10,967 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+11-09-10+00
+2022-11-25 11:09:43,105 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+10-08-37+00
+2022-11-25 12:09:44,064 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+12-09-43+00
+2022-11-25 12:10:15,564 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+11-09-10+00
+2022-11-25 13:10:16,258 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+13-10-15+00
+2022-11-25 13:10:47,167 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+12-09-43+00
+2022-11-25 14:10:47,966 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+14-10-47+00
+2022-11-25 14:11:17,784 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+13-10-15+00
+2022-11-25 14:21:21,188 - speechbrain.utils.train_logger - INFO - epoch: 39, time: 05:03:58, lr: 1.50e-04 - train si-snr: -1.04e+01 - valid si-snr: -1.06e+01, valid pesq: 2.56
+2022-11-25 14:21:21,891 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+14-21-21+00
+2022-11-25 14:21:21,892 - speechbrain.utils.epoch_loop - INFO - Going into epoch 40
+2022-11-25 15:21:22,854 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+15-21-22+00
+2022-11-25 15:21:54,371 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+14-10-47+00
+2022-11-25 16:21:55,398 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+16-21-54+00
+2022-11-25 16:22:28,057 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+15-21-22+00
+2022-11-25 17:22:28,989 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+17-22-28+00
+2022-11-25 17:23:02,294 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+16-21-54+00
+2022-11-25 18:23:03,285 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+18-23-02+00
+2022-11-25 18:23:36,050 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+17-22-28+00
+2022-11-25 19:23:37,115 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+19-23-36+00
+2022-11-25 19:24:10,362 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+18-23-02+00
+2022-11-25 19:34:11,578 - speechbrain.utils.train_logger - INFO - epoch: 40, time: 05:04:06, lr: 1.50e-04 - train si-snr: -1.06e+01 - valid si-snr: -1.06e+01, valid pesq: 2.57
+2022-11-25 19:34:12,349 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+19-34-11+00
+2022-11-25 19:34:14,273 - speechbrain.utils.epoch_loop - INFO - Going into epoch 41
+2022-11-25 20:34:15,421 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+20-34-14+00
+2022-11-25 20:34:48,391 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+19-23-36+00
+2022-11-25 21:34:49,436 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+21-34-48+00
+2022-11-25 21:35:25,905 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+20-34-14+00
+2022-11-25 22:35:26,736 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+22-35-26+00
+2022-11-25 22:35:59,842 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+21-34-48+00
+2022-11-25 23:36:01,022 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+23-36-00+00
+2022-11-25 23:36:35,896 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+22-35-26+00
+2022-11-26 00:36:36,846 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+00-36-36+00
+2022-11-26 00:37:11,200 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-25+23-36-00+00
+2022-11-26 00:46:44,630 - speechbrain.utils.train_logger - INFO - epoch: 41, time: 05:03:46, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.06e+01, valid pesq: 2.58
+2022-11-26 00:46:45,342 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+00-46-44+00
+2022-11-26 00:46:47,029 - speechbrain.utils.epoch_loop - INFO - Going into epoch 42
+2022-11-26 01:46:47,955 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+01-46-47+00
+2022-11-26 01:47:22,683 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+00-36-36+00
+2022-11-26 02:47:23,818 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+02-47-23+00
+2022-11-26 02:47:58,993 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+01-46-47+00
+2022-11-26 03:48:00,234 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+03-47-59+00
+2022-11-26 03:48:37,331 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+02-47-23+00
+2022-11-26 04:48:38,195 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+04-48-37+00
+2022-11-26 04:49:13,956 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+03-47-59+00
+2022-11-26 05:49:15,115 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+05-49-14+00
+2022-11-26 05:49:52,023 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+04-48-37+00
+2022-11-26 05:59:48,288 - speechbrain.utils.train_logger - INFO - epoch: 42, time: 05:04:17, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.06e+01, valid pesq: 2.53
+2022-11-26 05:59:49,096 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+05-59-48+00
+2022-11-26 05:59:50,817 - speechbrain.utils.epoch_loop - INFO - Going into epoch 43
+2022-11-26 06:59:52,066 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+06-59-51+00
+2022-11-26 07:00:29,472 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+05-49-14+00
+2022-11-26 08:00:30,607 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+08-00-29+00
+2022-11-26 08:01:09,746 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+06-59-51+00
+2022-11-26 09:01:10,633 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+09-01-09+00
+2022-11-26 09:01:50,826 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+08-00-29+00
+2022-11-26 10:01:51,638 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+10-01-50+00
+2022-11-26 10:02:28,064 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+09-01-09+00
+2022-11-26 11:02:29,266 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+11-02-28+00
+2022-11-26 11:03:07,047 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+10-01-50+00
+2022-11-26 11:12:50,735 - speechbrain.utils.train_logger - INFO - epoch: 43, time: 05:04:14, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.07e+01, valid pesq: 2.56
+2022-11-26 11:12:51,445 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+11-12-50+00
+2022-11-26 11:12:51,447 - speechbrain.utils.epoch_loop - INFO - Going into epoch 44
+2022-11-26 12:12:52,400 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+12-12-51+00
+2022-11-26 12:13:31,595 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+11-02-28+00
+2022-11-26 13:13:32,383 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+13-13-31+00
+2022-11-26 13:14:08,768 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+12-12-51+00
+2022-11-26 14:14:09,951 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+14-14-09+00
+2022-11-26 14:14:47,395 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+13-13-31+00
+2022-11-26 15:14:48,513 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+15-14-47+00
+2022-11-26 15:15:26,879 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+14-14-09+00
+2022-11-26 16:15:28,076 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+16-15-27+00
+2022-11-26 16:16:05,773 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+15-14-47+00
+2022-11-26 16:26:09,156 - speechbrain.utils.train_logger - INFO - epoch: 44, time: 05:04:33, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.07e+01, valid pesq: 2.57
+2022-11-26 16:26:09,970 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+16-26-09+00
+2022-11-26 16:26:09,972 - speechbrain.utils.epoch_loop - INFO - Going into epoch 45
+2022-11-26 17:26:10,746 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+17-26-10+00
+2022-11-26 17:26:50,225 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+16-15-27+00
+2022-11-26 18:26:51,022 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+18-26-50+00
+2022-11-26 18:27:29,053 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+17-26-10+00
+2022-11-26 19:27:30,138 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+19-27-29+00
+2022-11-26 19:28:14,088 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+18-26-50+00
+2022-11-26 20:28:14,888 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+20-28-14+00
+2022-11-26 20:29:00,910 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+19-27-29+00
+2022-11-26 21:29:01,673 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+21-29-00+00
+2022-11-26 21:29:43,084 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+20-28-14+00
+2022-11-26 21:39:38,628 - speechbrain.utils.train_logger - INFO - epoch: 45, time: 05:04:43, lr: 1.50e-04 - train si-snr: -1.06e+01 - valid si-snr: -1.06e+01, valid pesq: 2.54
+2022-11-26 21:39:39,351 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+21-39-38+00
+2022-11-26 21:39:39,947 - speechbrain.utils.epoch_loop - INFO - Going into epoch 46
+2022-11-26 22:39:40,811 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+22-39-40+00
+2022-11-26 22:40:25,817 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+21-29-00+00
+2022-11-26 23:40:26,849 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+23-40-26+00
+2022-11-26 23:41:11,789 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+22-39-40+00
+2022-11-27 00:41:12,711 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+00-41-11+00
+2022-11-27 00:41:55,014 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-26+23-40-26+00
+2022-11-27 01:41:56,131 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+01-41-55+00
+2022-11-27 01:42:38,848 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+00-41-11+00
+2022-11-27 02:42:39,884 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+02-42-39+00
+2022-11-27 02:43:24,392 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+01-41-55+00
+2022-11-27 02:53:20,864 - speechbrain.utils.train_logger - INFO - epoch: 46, time: 05:04:58, lr: 1.50e-04 - train si-snr: -1.04e+01 - valid si-snr: -1.07e+01, valid pesq: 2.56
+2022-11-27 02:53:21,777 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+02-53-20+00
+2022-11-27 02:53:23,827 - speechbrain.utils.epoch_loop - INFO - Going into epoch 47
+2022-11-27 03:53:24,708 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+03-53-23+00
+2022-11-27 03:54:08,028 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+02-42-39+00
+2022-11-27 04:54:08,829 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+04-54-08+00
+2022-11-27 04:54:53,280 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+03-53-23+00
+2022-11-27 05:54:54,496 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+05-54-53+00
+2022-11-27 05:55:37,638 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+04-54-08+00
+2022-11-27 06:55:38,528 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+06-55-37+00
+2022-11-27 06:56:23,485 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+05-54-53+00
+2022-11-27 07:56:24,361 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+07-56-23+00
+2022-11-27 07:57:08,364 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+06-55-37+00
+2022-11-27 08:06:49,530 - speechbrain.utils.train_logger - INFO - epoch: 47, time: 05:04:43, lr: 1.50e-04 - train si-snr: -1.06e+01 - valid si-snr: -1.07e+01, valid pesq: 2.57
+2022-11-27 08:06:50,289 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+08-06-49+00
+2022-11-27 08:06:52,324 - speechbrain.utils.epoch_loop - INFO - Going into epoch 48
+2022-11-27 09:06:53,151 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+09-06-52+00
+2022-11-27 09:07:39,156 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+07-56-23+00
+2022-11-27 10:07:40,370 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+10-07-39+00
+2022-11-27 10:08:25,158 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+09-06-52+00
+2022-11-27 11:08:26,193 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+11-08-25+00
+2022-11-27 11:09:10,273 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+10-07-39+00
+2022-11-27 12:09:11,337 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+12-09-10+00
+2022-11-27 12:09:56,982 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+11-08-25+00
+2022-11-27 13:09:57,775 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+13-09-57+00
+2022-11-27 13:10:43,498 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+12-09-10+00
+2022-11-27 13:20:34,262 - speechbrain.utils.train_logger - INFO - epoch: 48, time: 05:04:57, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.06e+01, valid pesq: 2.60
+2022-11-27 13:20:35,013 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+13-20-34+00
+2022-11-27 13:20:35,014 - speechbrain.utils.epoch_loop - INFO - Going into epoch 49
+2022-11-27 14:20:35,995 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+14-20-35+00
+2022-11-27 14:21:22,675 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+13-09-57+00
+2022-11-27 15:21:23,541 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+15-21-22+00
+2022-11-27 15:22:11,070 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+14-20-35+00
+2022-11-27 16:22:11,927 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+16-22-11+00
+2022-11-27 16:22:58,785 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+15-21-22+00
+2022-11-27 17:23:00,011 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+17-22-59+00
+2022-11-27 17:23:50,217 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+16-22-11+00
+2022-11-27 18:23:51,144 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+18-23-50+00
+2022-11-27 18:24:42,643 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+17-22-59+00
+2022-11-27 18:34:35,180 - speechbrain.utils.train_logger - INFO - epoch: 49, time: 05:05:15, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.06e+01, valid pesq: 2.56
+2022-11-27 18:34:35,909 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+18-34-35+00
+2022-11-27 18:34:36,211 - speechbrain.utils.epoch_loop - INFO - Going into epoch 50
+2022-11-27 19:34:37,238 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+19-34-36+00
+2022-11-27 19:35:30,327 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+18-23-50+00
+2022-11-27 20:35:31,092 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+20-35-30+00
+2022-11-27 20:36:25,335 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+19-34-36+00
+2022-11-27 21:36:26,327 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+21-36-25+00
+2022-11-27 21:37:22,247 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+20-35-30+00
+2022-11-27 22:37:23,195 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+22-37-22+00
+2022-11-27 22:38:18,466 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+21-36-25+00
+2022-11-27 23:38:19,740 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+23-38-18+00
+2022-11-27 23:39:19,882 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+22-37-22+00
+2022-11-27 23:49:16,482 - speechbrain.utils.train_logger - INFO - epoch: 50, time: 05:05:56, lr: 1.50e-04 - train si-snr: -1.06e+01 - valid si-snr: -1.07e+01, valid pesq: 2.59
+2022-11-27 23:49:17,237 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+23-49-16+00
+2022-11-27 23:49:18,752 - speechbrain.utils.epoch_loop - INFO - Going into epoch 51
+2022-11-28 00:49:19,851 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+00-49-18+00
+2022-11-28 00:50:19,118 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-27+23-38-18+00
+2022-11-28 01:50:20,408 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+01-50-19+00
+2022-11-28 01:51:18,955 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+00-49-18+00
+2022-11-28 02:51:20,152 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+02-51-19+00
+2022-11-28 02:52:21,041 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+01-50-19+00
+2022-11-28 03:52:22,115 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+03-52-21+00
+2022-11-28 03:53:22,574 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+02-51-19+00
+2022-11-28 04:53:23,484 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+04-53-22+00
+2022-11-28 04:54:22,434 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+03-52-21+00
+2022-11-28 05:04:01,366 - speechbrain.utils.train_logger - INFO - epoch: 51, time: 05:05:55, lr: 1.50e-04 - train si-snr: -1.06e+01 - valid si-snr: -1.08e+01, valid pesq: 2.61
+2022-11-28 05:04:02,115 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+05-04-01+00
+2022-11-28 05:04:02,117 - speechbrain.utils.epoch_loop - INFO - Going into epoch 52
+2022-11-28 06:04:03,343 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+06-04-02+00
+2022-11-28 06:05:05,933 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+04-53-22+00
+2022-11-28 07:05:07,247 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+07-05-06+00
+2022-11-28 07:06:12,580 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+06-04-02+00
+2022-11-28 08:06:13,613 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+08-06-12+00
+2022-11-28 08:07:15,974 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+07-05-06+00
+2022-11-28 09:07:17,183 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+09-07-16+00
+2022-11-28 09:08:22,289 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+08-06-12+00
+2022-11-28 10:08:23,523 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+10-08-22+00
+2022-11-28 10:09:27,628 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+09-07-16+00
+2022-11-28 10:19:09,037 - speechbrain.utils.train_logger - INFO - epoch: 52, time: 05:06:21, lr: 1.50e-04 - train si-snr: -1.07e+01 - valid si-snr: -1.07e+01, valid pesq: 2.55
+2022-11-28 10:19:09,791 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+10-19-09+00
+2022-11-28 10:19:09,792 - speechbrain.utils.epoch_loop - INFO - Going into epoch 53
+2022-11-28 11:19:10,970 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+11-19-10+00
+2022-11-28 11:20:15,220 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+10-08-22+00
+2022-11-28 12:20:16,824 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+12-20-15+00
+2022-11-28 12:21:23,319 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+11-19-10+00
+2022-11-28 13:21:24,489 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+13-21-23+00
+2022-11-28 13:22:30,750 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+12-20-15+00
+2022-11-28 14:22:31,870 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+14-22-30+00
+2022-11-28 14:23:37,916 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+13-21-23+00
+2022-11-28 15:23:39,324 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+15-23-38+00
+2022-11-28 15:24:44,740 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+14-22-30+00
+2022-11-28 15:34:16,441 - speechbrain.utils.train_logger - INFO - epoch: 53, time: 05:06:20, lr: 1.50e-04 - train si-snr: -1.06e+01 - valid si-snr: -1.07e+01, valid pesq: 2.59
+2022-11-28 15:34:17,222 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+15-34-16+00
+2022-11-28 15:34:17,223 - speechbrain.utils.epoch_loop - INFO - Going into epoch 54
+2022-11-28 16:34:18,351 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+16-34-17+00
+2022-11-28 16:35:21,277 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+15-23-38+00
+2022-11-28 17:35:22,264 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+17-35-21+00
+2022-11-28 17:36:24,154 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+16-34-17+00
+2022-11-28 18:36:24,993 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+18-36-24+00
+2022-11-28 18:37:29,836 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+17-35-21+00
+2022-11-28 19:37:30,553 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+19-37-29+00
+2022-11-28 19:38:34,816 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+18-36-24+00
+2022-11-28 20:38:36,051 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+20-38-35+00
+2022-11-28 20:39:37,076 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+19-37-29+00
+2022-11-28 20:49:24,768 - speechbrain.utils.train_logger - INFO - epoch: 54, time: 05:06:22, lr: 1.50e-04 - train si-snr: -1.07e+01 - valid si-snr: -1.07e+01, valid pesq: 2.57
+2022-11-28 20:49:25,482 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+20-49-24+00
+2022-11-28 20:49:25,483 - speechbrain.utils.epoch_loop - INFO - Going into epoch 55
+2022-11-28 21:49:26,349 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+21-49-25+00
+2022-11-28 21:50:34,444 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+20-38-35+00
+2022-11-28 22:50:35,676 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+22-50-34+00
+2022-11-28 22:51:46,737 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+21-49-25+00
+2022-11-28 23:51:47,580 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+23-51-46+00
+2022-11-28 23:52:53,825 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+22-50-34+00
+2022-11-29 00:52:54,743 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+00-52-53+00
+2022-11-29 00:54:04,747 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-28+23-51-46+00
+2022-11-29 01:54:05,543 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+01-54-04+00
+2022-11-29 01:55:12,814 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+00-52-53+00
+2022-11-29 02:04:53,905 - speechbrain.utils.train_logger - INFO - epoch: 55, time: 05:06:41, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.07e+01, valid pesq: 2.56
+2022-11-29 02:04:54,668 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+02-04-53+00
+2022-11-29 02:04:54,669 - speechbrain.utils.epoch_loop - INFO - Going into epoch 56
+2022-11-29 03:04:55,510 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+03-04-54+00
+2022-11-29 03:06:06,006 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+01-54-04+00
+2022-11-29 04:06:06,902 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+04-06-06+00
+2022-11-29 04:07:18,277 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+03-04-54+00
+2022-11-29 05:07:19,223 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+05-07-18+00
+2022-11-29 05:08:29,810 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+04-06-06+00
+2022-11-29 06:08:30,824 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+06-08-30+00
+2022-11-29 06:09:41,325 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+05-07-18+00
+2022-11-29 07:09:42,417 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+07-09-41+00
+2022-11-29 07:10:55,430 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+06-08-30+00
+2022-11-29 07:20:45,172 - speechbrain.utils.train_logger - INFO - epoch: 56, time: 05:07:03, lr: 1.50e-04 - train si-snr: -1.06e+01 - valid si-snr: -1.07e+01, valid pesq: 2.60
+2022-11-29 07:20:45,922 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+07-20-45+00
+2022-11-29 07:20:45,923 - speechbrain.utils.epoch_loop - INFO - Going into epoch 57
+2022-11-29 08:20:47,172 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+08-20-46+00
+2022-11-29 08:22:01,830 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+07-09-41+00
+2022-11-29 09:22:02,841 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+09-22-02+00
+2022-11-29 09:23:16,239 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+08-20-46+00
+2022-11-29 10:23:17,148 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+10-23-16+00
+2022-11-29 10:24:32,535 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+09-22-02+00
+2022-11-29 11:24:33,726 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+11-24-32+00
+2022-11-29 11:25:46,341 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+10-23-16+00
+2022-11-29 12:25:47,910 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+12-25-47+00
+2022-11-29 12:26:59,183 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+11-24-32+00
+2022-11-29 12:36:45,861 - speechbrain.utils.train_logger - INFO - epoch: 57, time: 05:07:14, lr: 1.50e-04 - train si-snr: -1.06e+01 - valid si-snr: -1.07e+01, valid pesq: 2.58
+2022-11-29 12:36:46,614 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+12-36-45+00
+2022-11-29 12:36:46,615 - speechbrain.utils.epoch_loop - INFO - Going into epoch 58
+2022-11-29 13:36:47,679 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+13-36-46+00
+2022-11-29 13:38:00,721 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+12-25-47+00
+2022-11-29 14:38:01,695 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+14-38-00+00
+2022-11-29 14:39:15,617 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+13-36-46+00
+2022-11-29 15:39:16,672 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+15-39-15+00
+2022-11-29 15:40:31,744 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+14-38-00+00
+2022-11-29 16:40:32,775 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+16-40-31+00
+2022-11-29 16:41:46,754 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+15-39-15+00
+2022-11-29 17:41:47,816 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+17-41-47+00
+2022-11-29 17:43:02,910 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+16-40-31+00
+2022-11-29 17:53:36,218 - speechbrain.utils.train_logger - INFO - epoch: 58, time: 05:08:04, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.06e+01, valid pesq: 2.54
+2022-11-29 17:53:36,964 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+17-53-36+00
+2022-11-29 17:53:36,965 - speechbrain.utils.epoch_loop - INFO - Going into epoch 59
+2022-11-29 18:53:38,036 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+18-53-37+00
+2022-11-29 18:54:50,159 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-29+17-41-47+00
+2022-12-01 10:49:01,234 - speechbrain.core - ERROR - Exception:
+Traceback (most recent call last):
+  File "/netscratch/sagar/thesis/speechbrain/recipes/DNS/enhancement/train.py", line 732, in <module>
+  File "/netscratch/sagar/thesis/speechbrain/speechbrain/core.py", line 1163, in fit
+  File "/netscratch/sagar/thesis/speechbrain/speechbrain/core.py", line 1007, in _fit_train
+  File "/netscratch/sagar/thesis/sb_env/lib/python3.9/site-packages/tqdm/std.py", line 1195, in __iter__
+  File "/netscratch/sagar/thesis/sb_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 530, in __next__
+  File "/netscratch/sagar/thesis/sb_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1224, in _next_data
+  File "/netscratch/sagar/thesis/sb_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1250, in _process_data
+  File "/netscratch/sagar/thesis/sb_env/lib/python3.9/site-packages/torch/_utils.py", line 457, in reraise
+RuntimeError: Caught RuntimeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/netscratch/sagar/thesis/sb_env/lib/python3.9/site-packages/torch/utils/data/_utils/worker.py", line 287, in _worker_loop
+  File "/netscratch/sagar/thesis/sb_env/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 49, in fetch
+  File "/netscratch/sagar/thesis/sb_env/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 49, in <listcomp>
+  File "/netscratch/sagar/thesis/speechbrain/speechbrain/dataio/dataset.py", line 165, in __getitem__
+  File "/netscratch/sagar/thesis/speechbrain/speechbrain/utils/data_pipeline.py", line 464, in compute_outputs
+  File "/netscratch/sagar/thesis/speechbrain/speechbrain/utils/data_pipeline.py", line 496, in _compute
+  File "/netscratch/sagar/thesis/speechbrain/speechbrain/utils/data_pipeline.py", line 72, in __call__
+  File "/netscratch/sagar/thesis/speechbrain/recipes/DNS/enhancement/train.py", line 619, in audio_pipeline_clean
+  File "/netscratch/sagar/thesis/speechbrain/speechbrain/dataio/dataio.py", line 200, in read_audio
+  File "/netscratch/sagar/thesis/sb_env/lib/python3.9/site-packages/torchaudio/backend/sox_io_backend.py", line 153, in load
+RuntimeError: Error loading audio file: failed to open file /netscratch/sagar/data/Microsoft-DNS/datasets_4s/spanish_speech/clean/clean_fileid_42403.wav
+
+0-10-02+00
+2022-11-30 02:12:24,188 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+02-12-23+00
+2022-11-30 02:13:33,936 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+01-11-14+00
+2022-11-30 03:13:34,693 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+03-13-33+00
+2022-11-30 03:14:40,124 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+02-12-23+00
+2022-11-30 04:14:41,129 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+04-14-40+00
+2022-11-30 04:15:51,610 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+03-13-33+00
+2022-11-30 04:27:46,204 - speechbrain.utils.train_logger - INFO - epoch: 60, time: 05:08:55, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.05e+01, valid pesq: 2.59
+2022-11-30 04:27:46,935 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+04-27-46+00
+2022-11-30 04:27:46,936 - speechbrain.utils.epoch_loop - INFO - Going into epoch 61
+2022-11-30 05:27:48,047 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+05-27-47+00
+2022-11-30 05:28:54,094 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+04-14-40+00
+2022-11-30 06:28:55,073 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+06-28-54+00
+2022-11-30 06:29:58,214 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+05-27-47+00
+2022-11-30 07:29:59,266 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+07-29-58+00
+2022-11-30 07:31:06,348 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+06-28-54+00
+2022-11-30 08:31:07,170 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+08-31-06+00
+2022-11-30 08:32:21,865 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+07-29-58+00
+2022-11-30 09:32:22,740 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+09-32-22+00
+2022-11-30 09:33:45,025 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+08-31-06+00
+2022-11-30 09:45:11,039 - speechbrain.utils.train_logger - INFO - epoch: 61, time: 05:08:39, lr: 1.50e-04 - train si-snr: -1.05e+01 - valid si-snr: -1.06e+01, valid pesq: 2.57
+2022-11-30 09:45:11,905 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+09-45-11+00
+2022-11-30 09:45:12,184 - speechbrain.utils.epoch_loop - INFO - Going into epoch 62
+2022-11-30 10:45:13,044 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+10-45-12+00
+2022-11-30 10:46:34,615 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+09-32-22+00
+2022-11-30 11:46:35,512 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+11-46-34+00
+2022-11-30 11:47:59,452 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+10-45-12+00
+2022-11-30 12:48:00,297 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+12-47-59+00
+2022-11-30 12:49:22,184 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+11-46-34+00
+2022-11-30 13:49:23,399 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+13-49-22+00
+2022-11-30 13:50:42,826 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+12-47-59+00
+2022-11-30 14:50:43,799 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+14-50-43+00
+2022-11-30 14:52:08,236 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+13-49-22+00
+2022-11-30 15:02:22,520 - speechbrain.utils.train_logger - INFO - epoch: 62, time: 05:08:22, lr: 1.50e-04 - train si-snr: -1.04e+01 - valid si-snr: -1.06e+01, valid pesq: 2.55
+2022-11-30 15:02:23,231 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+15-02-22+00
+2022-11-30 15:02:23,232 - speechbrain.utils.epoch_loop - INFO - Going into epoch 63
+2022-11-30 16:02:24,499 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+16-02-23+00
+2022-11-30 16:03:47,587 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+14-50-43+00
+2022-11-30 17:03:48,643 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+17-03-47+00
+2022-11-30 17:05:14,016 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+16-02-23+00
+2022-11-30 18:05:15,179 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+18-05-14+00
+2022-11-30 18:06:37,481 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+17-03-47+00
+2022-11-30 19:06:38,736 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+19-06-37+00
+2022-11-30 19:07:56,603 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+18-05-14+00
+2022-11-30 20:07:57,649 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+20-07-56+00
+2022-11-30 20:09:17,013 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+19-06-37+00
+2022-11-30 20:19:20,611 - speechbrain.utils.train_logger - INFO - epoch: 63, time: 05:08:13, lr: 1.50e-04 - train si-snr: -1.04e+01 - valid si-snr: -1.05e+01, valid pesq: 2.59
+2022-11-30 20:19:21,344 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+20-19-20+00
+2022-11-30 20:19:32,176 - speechbrain.utils.epoch_loop - INFO - Going into epoch 64
+2022-11-30 21:19:33,025 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+21-19-32+00
+2022-11-30 21:20:58,150 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+20-07-56+00
+2022-11-30 22:20:59,129 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+22-20-58+00
+2022-11-30 22:22:22,308 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+21-19-32+00
+2022-11-30 23:22:23,318 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+23-22-22+00
+2022-11-30 23:23:46,607 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+22-20-58+00
+2022-12-01 00:23:47,498 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+00-23-46+00
+2022-12-01 00:25:15,594 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-11-30+23-22-22+00
+2022-12-01 01:25:16,448 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+01-25-15+00
+2022-12-01 01:26:44,052 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+00-23-46+00
+2022-12-01 01:36:41,408 - speechbrain.utils.train_logger - INFO - epoch: 64, time: 05:08:23, lr: 1.50e-04 - train si-snr: -9.07e+00 - valid si-snr: -1.05e+01, valid pesq: 2.54
+2022-12-01 01:36:42,177 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+01-36-41+00
+2022-12-01 01:36:42,178 - speechbrain.utils.epoch_loop - INFO - Going into epoch 65
+2022-12-01 02:36:43,602 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+02-36-42+00
+2022-12-01 02:39:02,467 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+01-25-15+00
+2022-12-01 03:39:05,113 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+03-39-02+00
+2022-12-01 03:41:12,245 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+02-36-42+00
+2022-12-01 04:41:13,595 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+04-41-12+00
+2022-12-01 04:42:59,181 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+03-39-02+00
+2022-12-01 05:43:00,180 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+05-42-59+00
+2022-12-01 05:44:45,324 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+04-41-12+00
+2022-12-01 06:44:46,780 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+06-44-45+00
+2022-12-01 06:46:35,507 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+05-42-59+00
+2022-12-01 06:56:30,593 - speechbrain.utils.train_logger - INFO - epoch: 65, time: 05:11:02, lr: 1.50e-04 - train si-snr: -1.04e+01 - valid si-snr: -1.04e+01, valid pesq: 2.56
+2022-12-01 06:56:31,497 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+06-56-30+00
+2022-12-01 06:56:32,306 - speechbrain.utils.epoch_loop - INFO - Going into epoch 66
+2022-12-01 07:56:33,724 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+07-56-32+00
+2022-12-01 07:58:29,241 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+06-44-45+00
+2022-12-01 08:58:30,573 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+08-58-29+00
+2022-12-01 09:00:14,306 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+07-56-32+00
+2022-12-01 10:00:15,315 - speechbrain.utils.checkpoints - DEBUG - Saved an intra-epoch checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+10-00-14+00
+2022-12-01 10:01:59,839 - speechbrain.utils.checkpoints - DEBUG - Deleted checkpoint in results/sepformer-enhancement/1208/save/CKPT+2022-12-01+08-58-29+00
