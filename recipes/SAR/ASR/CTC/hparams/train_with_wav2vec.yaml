@@ -7,7 +7,7 @@
 
 # Seed needs to be set at top of yaml, before objects with parameters are made
 seed: 8200
-dataset: !ref dortmund
+dataset: !ref sar_combined
 __set_seed: !apply:torch.manual_seed [!ref <seed>]
 output_folder: !ref results/<dataset>/train_wav2vec2_char/<seed>
 wer_file: !ref <output_folder>/wer.txt

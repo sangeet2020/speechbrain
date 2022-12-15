@@ -81,7 +81,7 @@ def prepare_dns_csv(
 def create_dns_csv(datapath, savepath, fs=16000):
     """
     Create CSV files for train and valid set. To create valid
-    set, it separates out 0.5% of files from each
+    set, it separates out 0.05% of files from each
     split.
 
     Arguments:
@@ -273,6 +273,7 @@ def extract_files(datapath, type=None):
         files = sorted(glob.glob(datapath + "/*.wav"))
 
     return files
+    # return files[:len(files)//2]
 
 
 def train_dev_split(clean_data, noise_data, noisy_data, split_size=0.005):
