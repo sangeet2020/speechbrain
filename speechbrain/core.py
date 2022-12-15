@@ -1040,11 +1040,7 @@ class Brain:
             initial=self.step,
             dynamic_ncols=True,
             disable=not enable,
-<<<<<<< HEAD
-            colour='GREEN'
-=======
             colour=self.tqdm_barcolor["train"],
->>>>>>> 46be2d16bdb222ad06821b804c5f61d17a5431f4
         ) as t:
             for batch in t:
                 if self._optimizer_step_limit_exceeded:
@@ -1091,12 +1087,8 @@ class Brain:
             self.tr_time = time.strftime('%H:%M:%S', time.gmtime(t.format_dict["elapsed"]))
 
         # Run train "on_stage_end" on all processes
-<<<<<<< HEAD
-        self.on_stage_end(Stage.TRAIN, self.avg_train_loss, epoch, self.tr_time)
-=======
         self.zero_grad(set_to_none=True)  # flush gradients
         self.on_stage_end(Stage.TRAIN, self.avg_train_loss, epoch)
->>>>>>> 46be2d16bdb222ad06821b804c5f61d17a5431f4
         self.avg_train_loss = 0.0
         self.step = 0
 
@@ -1108,14 +1100,10 @@ class Brain:
             avg_valid_loss = 0.0
             with torch.no_grad():
                 for batch in tqdm(
-<<<<<<< HEAD
-                    valid_set, dynamic_ncols=True, disable=not enable, colour='MAGENTA'
-=======
                     valid_set,
                     dynamic_ncols=True,
                     disable=not enable,
                     colour=self.tqdm_barcolor["valid"],
->>>>>>> 46be2d16bdb222ad06821b804c5f61d17a5431f4
                 ):
                     self.step += 1
                     loss = self.evaluate_batch(batch, stage=Stage.VALID)
@@ -1334,14 +1322,10 @@ class Brain:
         avg_test_loss = 0.0
         with torch.no_grad():
             for batch in tqdm(
-<<<<<<< HEAD
-                test_set, dynamic_ncols=True, disable=not progressbar, colour='CYAN'
-=======
                 test_set,
                 dynamic_ncols=True,
                 disable=not progressbar,
                 colour=self.tqdm_barcolor["test"],
->>>>>>> 46be2d16bdb222ad06821b804c5f61d17a5431f4
             ):
                 self.step += 1
                 loss = self.evaluate_batch(batch, stage=Stage.TEST)
