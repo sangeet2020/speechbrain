@@ -48,12 +48,17 @@ from pprint import pprint
 
 # Define training procedure
 class Separation(sb.Brain):
-    def compute_forward(self, noisy, clean, stage, noise=None):
+    def compute_forward(self, batch, stage):
         """Forward computations from the noisy to the separated signals."""
+
+        noisy = batch.noisy_sig
+        clean = batch.clean_sig
+        noise = batch.noise_sig[0]
 
         # Unpack lists and put tensors in the right device
         noisy, noisy_lens = noisy
         noisy, noisy_lens = noisy.to(self.device), noisy_lens.to(self.device)
+
         # Convert clean to tensor
         clean = clean[0].unsqueeze(-1).to(self.device)
 
@@ -63,10 +68,10 @@ class Separation(sb.Brain):
             with torch.no_grad():
                 if self.hparams.use_speedperturb or self.hparams.use_rand_shift:
                     noisy, clean = self.add_speed_perturb(clean, noisy_lens)
-                    
+
                     # add reverberation to clean signal
-                    clean_rev = self.hparams.reverb(clean[:,:,0], None)
-                    
+                    clean_rev = self.hparams.reverb(clean[:, :, 0], None)
+
                     noise = noise.to(self.device)
                     len_noise = noise.shape[1]
                     len_noisy = noisy.shape[1]
@@ -116,95 +121,22 @@ class Separation(sb.Brain):
         feats = torch.log1p(feats)
         return feats
 
-    def compute_objectives(self, predictions, clean):
+    def compute_objectives(self, outputs, batch=None, stage=None):
         """Computes the si-snr loss"""
-        predicted_wavs, predicted_specs = predictions
-
+        [predicted_wavs, predicted_specs], clean = outputs
         if self.use_freq_domain:
             target_specs = self.compute_feats(clean)
-            return self.hparams.loss(target_specs, predicted_specs)
+            loss = self.hparams.loss(target_specs, predicted_specs)
         else:
-            return self.hparams.loss(
+            loss = self.hparams.loss(
                 clean.unsqueeze(-1), predicted_wavs.unsqueeze(-1)
             )
+        return loss.mean()
 
     def fit_batch(self, batch):
         """Trains one batch"""
-        # Unpacking batch list
-        noisy = batch.noisy_sig
-        clean = batch.clean_sig
-        noise = batch.noise_sig[0]
         print(batch.clean_wav[0].split("/")[-3])
-
-        if self.auto_mix_prec:
-            with autocast():
-                predictions, clean = self.compute_forward(
-                    noisy, clean, sb.Stage.TRAIN, noise
-                )
-                loss = self.compute_objectives(predictions, clean)
-
-                # hard threshold the easy dataitems
-                if self.hparams.threshold_byloss:
-                    th = self.hparams.threshold
-                    loss_to_keep = loss[loss > th]
-                    if loss_to_keep.nelement() > 0:
-                        loss = loss_to_keep.mean()
-                else:
-                    loss = loss.mean()
-
-            if (
-                loss < self.hparams.loss_upper_lim and loss.nelement() > 0
-            ):  # the fix for computational problems
-                self.scaler.scale(loss).backward()
-                if self.hparams.clip_grad_norm >= 0:
-                    self.scaler.unscale_(self.optimizer)
-                    torch.nn.utils.clip_grad_norm_(
-                        self.modules.parameters(), self.hparams.clip_grad_norm,
-                    )
-                self.scaler.step(self.optimizer)
-                self.scaler.update()
-            else:
-                self.nonfinite_count += 1
-                logger.info(
-                    "infinite loss or empty loss! it happened {} times so far - skipping this batch".format(
-                        self.nonfinite_count
-                    )
-                )
-                loss.data = torch.tensor(0).to(self.device)
-        else:
-            predictions, clean = self.compute_forward(
-                noisy, clean, sb.Stage.TRAIN, noise
-            )
-            loss = self.compute_objectives(predictions, clean)
-
-            if self.hparams.threshold_byloss:
-                th = self.hparams.threshold
-                loss_to_keep = loss[loss > th]
-                if loss_to_keep.nelement() > 0:
-                    loss = loss_to_keep.mean()
-            else:
-                loss = loss.mean()
-
-            if (
-                loss < self.hparams.loss_upper_lim and loss.nelement() > 0
-            ):  # the fix for computational problems
-                loss.backward()
-                if self.hparams.clip_grad_norm >= 0:
-                    torch.nn.utils.clip_grad_norm_(
-                        self.modules.parameters(), self.hparams.clip_grad_norm
-                    )
-                self.optimizer.step()
-            else:
-                self.nonfinite_count += 1
-                logger.info(
-                    "infinite loss or empty loss! it happened {} times so far - skipping this batch".format(
-                        self.nonfinite_count
-                    )
-                )
-                loss.data = torch.tensor(0).to(self.device)
-        self.optimizer.zero_grad()
-
-        return loss.detach().cpu()
+        return super().fit_batch(batch)
 
     def evaluate_batch(self, batch, stage):
         """Computations needed for validation/test batches"""
@@ -213,9 +145,9 @@ class Separation(sb.Brain):
         clean = batch.clean_sig
 
         with torch.no_grad():
-            predictions, clean = self.compute_forward(noisy, clean, stage)
-            loss = self.compute_objectives(predictions, clean)
-            loss = torch.mean(loss)
+            outputs = self.compute_forward(batch, stage)
+            loss = self.compute_objectives(outputs, batch, stage)
+            predictions, clean = outputs
 
         if stage != sb.Stage.TRAIN:
             self.pesq_metric.append(
@@ -292,7 +224,11 @@ class Separation(sb.Brain):
                 current_lr = self.hparams.optimizer.optim.param_groups[0]["lr"]
 
             self.hparams.train_logger.log_stats(
-                stats_meta={"epoch": epoch, "time": tr_time, "lr": current_lr},
+                stats_meta={
+                    "epoch": epoch,
+                    "tr_time": tr_time,
+                    "lr": current_lr,
+                },
                 train_stats=self.train_stats,
                 valid_stats=stats,
             )
@@ -362,7 +298,7 @@ class Separation(sb.Brain):
         return noisy, clean
 
     def cut_signals(self, noisy, clean):
-        """This function selects a random segment of a given length withing the noisy.
+        """This function selects a random segment of a given length within the noisy.
         The corresponding clean are selected accordingly"""
         randstart = torch.randint(
             0,
@@ -435,9 +371,8 @@ class Separation(sb.Brain):
                     clean = batch.clean_sig
 
                     with torch.no_grad():
-                        predictions, clean = self.compute_forward(
-                            batch.noisy_sig, clean, sb.Stage.TEST
-                        )
+                        outputs = self.compute_forward(batch, sb.Stage.TEST)
+                        predictions, clean = outputs
 
                     # Compute PESQ
                     psq_mode = (
@@ -446,14 +381,14 @@ class Separation(sb.Brain):
 
                     try:
                         # Compute SI-SNR
-                        sisnr = self.compute_objectives(predictions, clean)
+                        sisnr = self.compute_objectives(outputs, batch)
 
                         # Compute SI-SNR improvement
                         noisy_signal = noisy
 
                         noisy_signal = noisy_signal.to(clean.device)
                         sisnr_baseline = self.compute_objectives(
-                            [noisy_signal.squeeze(-1), None], clean
+                            ([noisy_signal.squeeze(-1), None], clean), batch
                         )
                         sisnr_i = sisnr - sisnr_baseline
 
@@ -546,7 +481,7 @@ class Separation(sb.Brain):
         logger.info("Mean CBAK {}".format(np.array(all_cbaks).mean()))
         logger.info("Mean COVL {}".format(np.array(all_covls).mean()))
         logger.info("Total files discarded {}".format(count))
-    
+
     def save_audio(self, snt_id, noisy, clean, predictions):
         "saves the test audio (noisy, clean, and estimated sources) on disk"
         print("Saving enhanced sources")
@@ -580,86 +515,75 @@ class Separation(sb.Brain):
         torchaudio.save(
             save_file, signal.unsqueeze(0).cpu(), self.hparams.sample_rate
         )
-    
+
     def zero_grad(self, set_to_none=False):
         self.optimizer.zero_grad(set_to_none)
 
+
+def audio_resampler(sig, info, sample_rate):
+    """Resample given signal to sampling 
+    frequency given by `sample_rate`
+    """
+    return torchaudio.transforms.Resample(info.sample_rate, sample_rate)(sig)
+
+
 def dataio_prep(hparams):
     """Creates data processing pipeline"""
-    # 1. Define datasets
-    train_data = sb.dataio.dataset.DynamicItemDataset.from_csv(
-        csv_path=hparams["train_data"],
-        replacements={"data_root": hparams["data_folder"]},
+    # 1. Define audio pipelines
+    @sb.utils.data_pipeline.takes("clean_wav", "noise_wav", "noisy_wav")
+    @sb.utils.data_pipeline.provides(
+        "clean_wav",
+        "clean_sig",
+        "noise_wav",
+        "noise_sig",
+        "noisy_wav",
+        "noisy_sig",
     )
-
-    # Shuffle training data.
-    hparams["dataloader_opts"]["shuffle"] = hparams["shuffle_train_data"]
-
-    valid_data = sb.dataio.dataset.DynamicItemDataset.from_csv(
-        csv_path=hparams["valid_data"],
-        replacements={"data_root": hparams["data_folder"]},
-    )
-
-    test_data = sb.dataio.dataset.DynamicItemDataset.from_csv(
-        csv_path=hparams["test_data"],
-        replacements={"data_root": hparams["data_folder"]},
-    )
-
-    datasets = [train_data, valid_data, test_data]
-
-    # 2. Provide audio pipelines
-
-    @sb.utils.data_pipeline.takes("clean_wav")
-    @sb.utils.data_pipeline.provides("clean_wav", "clean_sig")
-    def audio_pipeline_clean(clean_wav):
+    def audio_pipeline(clean_wav, noise_wav, noisy_wav):
         clean_sig = sb.dataio.dataio.read_audio(clean_wav)
-        if hparams["resample"]:
-            info = torchaudio.info(clean_wav)
-            clean_sig = torchaudio.transforms.Resample(
-                info.sample_rate, hparams["sample_rate"],
-            )(clean_sig)
-        return clean_wav, clean_sig
-
-    @sb.utils.data_pipeline.takes("noise_wav")
-    @sb.utils.data_pipeline.provides("noise_wav", "noise_sig")
-    def audio_pipeline_noise(noise_wav):
         noise_sig = sb.dataio.dataio.read_audio(noise_wav)
-        if hparams["resample"]:
-            info = torchaudio.info(noise_wav)
-            noise_sig = torchaudio.transforms.Resample(
-                info.sample_rate, hparams["sample_rate"],
-            )(noise_sig)
-        return noise_wav, noise_sig
-
-    @sb.utils.data_pipeline.takes("noisy_wav")
-    @sb.utils.data_pipeline.provides("noisy_wav", "noisy_sig")
-    def audio_pipeline_noisy(noisy_wav):
         noisy_sig = sb.dataio.dataio.read_audio(noisy_wav)
         if hparams["resample"]:
-            info = torchaudio.info(noisy_wav)
-            noisy_sig = torchaudio.transforms.Resample(
-                info.sample_rate, hparams["sample_rate"],
-            )(noisy_sig)
-        return noisy_wav, noisy_sig
+            info = torchaudio.info(clean_wav)
+            clean_sig = audio_resampler(clean_sig, info, hparams["sample_rate"])
+            noise_sig = audio_resampler(noise_sig, info, hparams["sample_rate"])
+            noisy_sig = audio_resampler(noisy_sig, info, hparams["sample_rate"])
+        yield clean_wav
+        yield clean_sig
+        yield noise_wav
+        yield noise_sig
+        yield noisy_wav
+        yield noisy_sig
 
-    sb.dataio.dataset.add_dynamic_item(datasets, audio_pipeline_clean)
-    sb.dataio.dataset.add_dynamic_item(datasets, audio_pipeline_noise)
-    sb.dataio.dataset.add_dynamic_item(datasets, audio_pipeline_noisy)
+    # 2. Create datasets
+    data = {}
+    data_info = {
+        "train": hparams["train_data"],
+        "valid": hparams["valid_data"],
+        "test": hparams["test_data"],
+    }
+    output_keys = [
+        "id",
+        "clean_wav",
+        "clean_sig",
+        "noise_wav",
+        "noise_sig",
+        "noisy_wav",
+        "noisy_sig",
+    ]
+    for dataset in data_info:
+        data[dataset] = sb.dataio.dataset.DynamicItemDataset.from_csv(
+            csv_path=data_info[dataset],
+            replacements={"data_root": hparams["data_folder"]},
+            dynamic_items=[audio_pipeline],
+            output_keys=output_keys,
+        )
+        if dataset == "train":
+            hparams["dataloader_opts"]["shuffle"] = hparams[
+                "shuffle_train_data"
+            ]
 
-    sb.dataio.dataset.set_output_keys(
-        datasets,
-        [
-            "id",
-            "clean_wav",
-            "clean_sig",
-            "noise_wav",
-            "noise_sig",
-            "noisy_wav",
-            "noisy_sig",
-        ],
-    )
-
-    return train_data, valid_data, test_data
+    return data
 
 
 if __name__ == "__main__":
@@ -703,13 +627,13 @@ if __name__ == "__main__":
             # "fs": hparams["sample_rate"],
         },
     )
-    
+
     # Convolves an audio signal with an impulse response.
     hparams["reverb"] = sb.processing.speech_augmentation.AddReverb(
         hparams["dns_rirs"]
     )
 
-    train_data, valid_data, test_data = dataio_prep(hparams)
+    datasets = dataio_prep(hparams)
 
     # Load pretrained model if pretrained_separator is present in the yaml
     if "pretrained_separator" in hparams:
@@ -738,12 +662,12 @@ if __name__ == "__main__":
         # Training
         separator.fit(
             separator.hparams.epoch_counter,
-            train_data,
-            valid_data,
+            datasets["train"],
+            datasets["valid"],
             train_loader_kwargs=hparams["dataloader_opts"],
             valid_loader_kwargs=hparams["dataloader_opts_valid"],
         )
 
     # Eval
-    separator.evaluate(test_data, max_key="pesq")
-    separator.save_results(test_data)
+    separator.evaluate(datasets["test"], max_key="pesq")
+    separator.save_results(datasets["test"])

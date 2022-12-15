@@ -64,7 +64,7 @@ ckpt_interval_minutes: 60
 
 # Parameters for data augmentation
 use_wavedrop: False
-use_speedperturb: True
+use_speedperturb: False
 use_rand_shift: False
 min_shift: -8000
 max_shift: 8000
