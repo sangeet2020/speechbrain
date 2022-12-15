@@ -42,8 +42,8 @@ from speechbrain.processing.features import spectral_magnitude
 from pesq import pesq
 from pystoi import stoi
 
-# import pdb
-# from pprint import pprint
+import pdb
+from pprint import pprint
 
 
 # Define training procedure
@@ -57,22 +57,25 @@ class Separation(sb.Brain):
         # Convert clean to tensor
         clean = clean[0].unsqueeze(-1).to(self.device)
 
+        ## Perform data augmentation.
         # Add speech distortions
         if stage == sb.Stage.TRAIN:
             with torch.no_grad():
                 if self.hparams.use_speedperturb or self.hparams.use_rand_shift:
                     noisy, clean = self.add_speed_perturb(clean, noisy_lens)
-
-                    noisy = clean.sum(-1)
+                    
+                    # add reverberation to clean signal
+                    clean_rev = self.hparams.reverb(clean[:,:,0], None)
+                    
                     noise = noise.to(self.device)
                     len_noise = noise.shape[1]
                     len_noisy = noisy.shape[1]
                     min_len = min(len_noise, len_noisy)
 
-                    # add the noise
-                    noisy = noisy[:, :min_len] + noise[:, :min_len]
+                    # add the noise to reverberated signal
+                    noisy = clean_rev[:, :min_len] + noise[:, :min_len]
 
-                    # fix the length of clean also
+                    # fix the length of clean signal
                     clean = clean[:, :min_len, :]
 
                 if self.hparams.use_wavedrop:
@@ -543,6 +546,7 @@ class Separation(sb.Brain):
         logger.info("Mean CBAK {}".format(np.array(all_cbaks).mean()))
         logger.info("Mean COVL {}".format(np.array(all_covls).mean()))
         logger.info("Total files discarded {}".format(count))
+    
     def save_audio(self, snt_id, noisy, clean, predictions):
         "saves the test audio (noisy, clean, and estimated sources) on disk"
         print("Saving enhanced sources")
@@ -576,7 +580,9 @@ class Separation(sb.Brain):
         torchaudio.save(
             save_file, signal.unsqueeze(0).cpu(), self.hparams.sample_rate
         )
-
+    
+    def zero_grad(self, set_to_none=False):
+        self.optimizer.zero_grad(set_to_none)
 
 def dataio_prep(hparams):
     """Creates data processing pipeline"""
@@ -607,7 +613,7 @@ def dataio_prep(hparams):
     @sb.utils.data_pipeline.provides("clean_wav", "clean_sig")
     def audio_pipeline_clean(clean_wav):
         clean_sig = sb.dataio.dataio.read_audio(clean_wav)
-        if hparams["downsample"]:
+        if hparams["resample"]:
             info = torchaudio.info(clean_wav)
             clean_sig = torchaudio.transforms.Resample(
                 info.sample_rate, hparams["sample_rate"],
@@ -618,7 +624,7 @@ def dataio_prep(hparams):
     @sb.utils.data_pipeline.provides("noise_wav", "noise_sig")
     def audio_pipeline_noise(noise_wav):
         noise_sig = sb.dataio.dataio.read_audio(noise_wav)
-        if hparams["downsample"]:
+        if hparams["resample"]:
             info = torchaudio.info(noise_wav)
             noise_sig = torchaudio.transforms.Resample(
                 info.sample_rate, hparams["sample_rate"],
@@ -629,7 +635,7 @@ def dataio_prep(hparams):
     @sb.utils.data_pipeline.provides("noisy_wav", "noisy_sig")
     def audio_pipeline_noisy(noisy_wav):
         noisy_sig = sb.dataio.dataio.read_audio(noisy_wav)
-        if hparams["downsample"]:
+        if hparams["resample"]:
             info = torchaudio.info(noisy_wav)
             noisy_sig = torchaudio.transforms.Resample(
                 info.sample_rate, hparams["sample_rate"],
@@ -696,6 +702,11 @@ if __name__ == "__main__":
             "skip_prep": hparams["skip_prep"],
             # "fs": hparams["sample_rate"],
         },
+    )
+    
+    # Convolves an audio signal with an impulse response.
+    hparams["reverb"] = sb.processing.speech_augmentation.AddReverb(
+        hparams["dns_rirs"]
     )
 
     train_data, valid_data, test_data = dataio_prep(hparams)

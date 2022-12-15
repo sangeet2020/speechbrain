@@ -18,6 +18,8 @@ data_folder:  /netscratch/sagar/data/Microsoft-DNS/datasets_4s/
 baseline_noisy_folder: /netscratch/sagar/data/Microsoft-DNS/datasets_4s/dev_testset/noisy_testclips
 # ../DNS-dataset/datasets_fullband/dev_testset/baseline_enhanced_testclips/
 baseline_enhanced_folder: /netscratch/sagar/data/Microsoft-DNS/datasets_4s/dev_testset/baseline_enhanced_testclips
+# Chosen RIRs csv files with lower_t60: 0.3 and  upper_t60: 1.3
+dns_rirs: whamr_rirs.csv
 
 experiment_name: sepformer-enhancement
 output_folder: !ref results/<experiment_name>/<seed>
@@ -42,7 +44,7 @@ test_only: False
 num_spks: 1
 noprogressbar: False
 save_audio: True    # Save estimated sources on disk
-downsample: False
+resample: False #  up-sample/down-sample
 sample_rate: 16000
 n_audio_to_save: 20
 
