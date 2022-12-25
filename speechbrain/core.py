@@ -271,7 +271,7 @@ def parse_arguments(arg_list=None):
     )
     parser.add_argument(
         "--tqdm_colored_bar",
-        default=False,
+        default=True,
         action="store_true",
         help="Enable colored progress-bar in tqdm. If this is "
         "false, tqdm shall use default colors.",
@@ -462,7 +462,7 @@ class Brain:
             "ckpt_interval_minutes": 0,
             "grad_accumulation_factor": 1,
             "optimizer_step_limit": None,
-            "tqdm_colored_bar": False,
+            "tqdm_colored_bar": True,
             "tqdm_barcolor": {
                 "train": "GREEN",
                 "valid": "MAGENTA",
@@ -1088,7 +1088,7 @@ class Brain:
 
         # Run train "on_stage_end" on all processes
         self.zero_grad(set_to_none=True)  # flush gradients
-        self.on_stage_end(Stage.TRAIN, self.avg_train_loss, epoch)
+        self.on_stage_end(Stage.TRAIN, self.avg_train_loss, epoch, self.tr_time)
         self.avg_train_loss = 0.0
         self.step = 0
 

@@ -121,7 +121,6 @@ def prepare_SAR(
                 tsv_file, save_csv, data_folder, accented_letters, language,
             )
 
-
 def skip(save_csv_train, save_csv_dev, save_csv_test):
     """
     Detects if the SAR data preparation has been already done.
@@ -146,8 +145,6 @@ def skip(save_csv_train, save_csv_dev, save_csv_test):
         skip = True
 
     return skip
-
-
 
 def create_csv(
     orig_tsv_file, csv_file, data_folder, accented_letters=False, language="en"
@@ -276,7 +273,7 @@ def create_clean_noisy_mix_csv(
 ):
     """
     Creates the csv file given a list of wav files. 
-    (for Phase 1 clean noisy mix fine-tuning.)
+    (for Phase 1 clean-noisy mix fine-tuning.)
 
     Arguments
     ---------
@@ -512,8 +509,6 @@ def check_sar_data_folders(data_folder):
         )
         raise FileNotFoundError(err_msg)
 
-
-
 def unicode_normalisation(text):
 
     try:
@@ -582,7 +577,6 @@ def data_cleaning(words, language):
         words = " ".join(map(galc, words.split(" ")))
         
     return words
-
 
 def strip_accents(text):
 
