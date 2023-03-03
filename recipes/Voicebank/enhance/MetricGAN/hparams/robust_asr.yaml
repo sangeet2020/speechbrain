@@ -18,7 +18,7 @@ train_log: !ref <output_folder>/train_log.txt
 MetricGAN_folder: !ref <output_folder>/enhanced_wavs
 data_folder: ../../vctk-16k  # e.g. /path/to/Voicebank
 json_dir: !ref vctk_json
-data_folder_rirs: !ref <data_folder>
+data_folder_rirs: !ref /netscratch/sagar/data/RIRs/
 train_annotation: !ref <json_dir>/train.json
 valid_annotation: !ref <json_dir>/valid.json
 test_annotation: !ref <json_dir>/test.json

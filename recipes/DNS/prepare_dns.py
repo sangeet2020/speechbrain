@@ -222,6 +222,8 @@ def create_baseline_dev_csv(noisy_datapath, enhanced_datapath, savepath):
         "enhanced_wav_format",
         "enhanced_wav_opts",
     ]
+    
+    import librosa
 
     with open(os.path.join(savepath, savename + ".csv"), "w") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
@@ -230,8 +232,13 @@ def create_baseline_dev_csv(noisy_datapath, enhanced_datapath, savepath):
         for (i, (noisy_fp, enhanced_fp),) in enumerate(
             zip(noisy_fullpaths, enhanced_fullpath)
         ):
-
+            signal = read_audio(noisy_fp)
+            fs = librosa.get_samplerate(noisy_fp)
+            duration = signal.shape[0] / fs
+            
             row = {
+                "ID": i,
+                "duration": duration,
                 "noisy_wav": noisy_fp,
                 "noisy_wav_format": "wav",
                 "noisy_wav_opts": None,
@@ -273,7 +280,7 @@ def extract_files(datapath, type=None):
         files = sorted(glob.glob(datapath + "/*.wav"))
 
     return files
-    # return files[:len(files)//2]
+    # return files[:len(files)//4]
 
 
 def train_dev_split(clean_data, noise_data, noisy_data, split_size=0.005):

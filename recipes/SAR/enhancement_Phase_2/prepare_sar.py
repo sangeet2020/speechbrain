@@ -103,9 +103,15 @@ def create_sar_csv(datapath, savepath, fs=16000, set="train"):
 
         return    
 
+    
     clean_f1_path = extract_files(os.path.join(datapath, set), type="clean")
     noise_f1_path = extract_files(os.path.join(datapath, set), type="noise")
     noisy_f1_path = extract_files(os.path.join(datapath, set), type="noisy")
+    
+    if set=="train":
+        clean_f1_path =  clean_f1_path[:len(clean_f1_path)//3]
+        noise_f1_path =  noise_f1_path[:len(noise_f1_path)//3]
+        noisy_f1_path =  noisy_f1_path[:len(noisy_f1_path)//3]
 
     language.extend([lang] * len(clean_f1_path))
     clean_fullpaths.extend(clean_f1_path)
@@ -197,7 +203,7 @@ def write2csv(
     # Retreive duration of just one signal. It is assumed
     # that all files have the same duration in MS-DNS dataset.
     
-
+    total_duration = 0
     with open(savepath, "w") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
         writer.writeheader()
@@ -207,8 +213,9 @@ def write2csv(
                 zip(language, clean_fullpaths, noise_fullpaths, noisy_fullpaths)
             )
         ):
-            signal = read_audio(noisy_fp)
+            signal = read_audio(clean_fp)
             duration = signal.shape[0] / fs
+            total_duration += duration
 
             row = {
                 "ID": i,
@@ -232,7 +239,7 @@ def write2csv(
     msg = "Number of samples: %s " % (str(len(clean_fullpaths)))
     logger.info(msg)
     msg = "Total duration: %s Hours" % (
-        str(round(duration * len(clean_fullpaths) / 3600, 2))
+        str(round(total_duration / 3600, 2))
     )
     logger.info(msg)
 
