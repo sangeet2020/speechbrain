@@ -452,8 +452,9 @@ class Separation(sb.Brain):
                         [mixture] * self.hparams.num_spks, dim=-1
                     )
                     mixture_signal = mixture_signal.to(targets.device)
+                    mix_w = self.compute_feats(mixture_signal.squeeze(-1))
                     sisnr_baseline = self.compute_objectives(
-                        [mixture_signal.squeeze(-1), None], targets
+                        [mixture_signal.squeeze(-1), mix_w], targets
                     )
                     sisnr_i = sisnr - sisnr_baseline
 
@@ -698,9 +699,7 @@ if __name__ == "__main__":
             if not os.path.exists(
                 os.path.normpath(hparams["base_folder_dm"]) + "_" + dm_suffix
             ):
-                from recipes.WHAMandWHAMR.meta.preprocess_dynamic_mixing import (
-                    resample_folder,
-                )
+                from preprocess_dynamic_mixing import resample_folder
 
                 print("Resampling the base folder")
                 run_on_main(
